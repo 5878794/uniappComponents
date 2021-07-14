@@ -1,0 +1,41 @@
+
+
+人脸识别--录像。。。
+只支持微信小程序
+
+html：
+注意：成功、关闭回调函数内需要自己设定  isShow变量的值来显示、隐藏
+<face-video
+	times='3'		//录像时间 单位秒   录像完成后自动上传
+	uploadServerUrl='http://119.23.48.90/index.php/api/common/upload'		//上传视频服务器地址
+	sign='364027b7169205957c956455bbfa7018'     //上传时的sign参数
+	:show='isShow'					//初始是否显示  
+	@success='fn'					//成功回调 返回图片地址  未测试
+	@close='close'					//关闭回调事件 
+></face-video>
+
+
+js：
+import faceVideo from '../../components/faceVideo/faceVideo.vue';
+export default {
+	components:{faceVideo},
+	data() {
+		return {
+			isShow:false
+		}
+	},
+	methods: {
+		btnClick(){
+			this.isShow = true;
+		},
+		//成功时
+		fn(imgsrc){
+			this.isShow = false;
+			console.log(imgsrc)
+		},
+		//关闭时
+		close(){
+			this.isShow = false;
+		}
+	}
+}

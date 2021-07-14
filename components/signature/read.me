@@ -1,0 +1,40 @@
+手写签名插件
+
+
+html:
+<signature 
+		class='signature'
+		colors='black,red,blue'			  //可选的画笔颜色
+		placeholder='请清晰书写您的签名'     //默认底层文字提示
+		@success='fn'					  //生成图片回调   返回本地图片地址
+></signature>
+
+
+
+
+js:
+import signature from '../../components/signature/signature.vue';
+export default {
+	components:{
+		signature
+	},
+	data(){
+		return {
+		}
+	},
+	methods:{
+		fn(imgSrc){
+			//图片地址
+			console.log(imgSrc)
+		}
+	}
+}
+
+
+css:
+page{
+	width: 100%; height: 100%;
+}
+.signature{
+	width:100%; height: 100%; display: block;
+}

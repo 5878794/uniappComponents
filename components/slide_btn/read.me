@@ -1,0 +1,15 @@
+
+崇州代驾android 项目用过
+滑动块确定
+
+<slide-btn
+    title='确定已收费'       //按钮标题
+    ref='slideBtn'         //id
+    @slideOk='slideOkFn'    //成功回调
+></slide-btn>
+
+
+
+js api:
+    let obj = this.$refs.slideBtn;
+    obj.goBack();           //返回初始未滑动状态

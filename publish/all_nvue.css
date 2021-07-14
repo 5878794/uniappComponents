@@ -1,0 +1,214 @@
+
+/*纵向排列 左上*/
+.box_slt{
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-start;
+}
+/*纵向排列 左中*/
+.box_slc{
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+}
+/*纵向排列 左下*/
+.box_slb{
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-end;
+}
+/*纵向排列 中上*/
+.box_sct{
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+}
+/*纵向排列 中中*/
+.box_scc{
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+/*纵向排列 中下*/
+.box_scb{
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+}
+/*纵向排列 右上*/
+.box_srt{
+  flex-direction:column;
+  align-items:flex-end;
+  justify-content:flex-start;
+}
+/*纵向排列 右中*/
+.box_src{
+  flex-direction:column;
+  align-items:flex-end;
+  justify-content:center;
+}
+/*纵向排列 右下*/
+.box_srb{
+  flex-direction:column;
+  align-items:flex-end;
+  justify-content:flex-end;
+}
+
+/*横向排列 左上*/
+.box_hlt{
+  flex-direction:row;
+  align-items:flex-start;
+  justify-content:flex-start;
+}
+/*横向排列 左中*/
+.box_hlc{
+  flex-direction:row;
+  align-items:center;
+  justify-content:flex-start;
+}
+/*横向排列 左下*/
+.box_hlb{
+  flex-direction:row;
+  align-items:flex-end;
+  justify-content:flex-start;
+}
+/*横向排列 中上*/
+.box_hct{
+  flex-direction:row;
+  align-items:flex-start;
+  justify-content:center;
+}
+/*横向排列 中中*/
+.box_hcc{
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+}
+/*横向排列 中下*/
+.box_hcb{
+  flex-direction:row;
+  align-items:flex-end;
+  justify-content:center;
+}
+/*横向排列 右上*/
+.box_hrt{
+  flex-direction:row;
+  align-items:flex-start;
+  justify-content:flex-end;
+}
+/*横向排列 右中*/
+.box_hrc{
+  flex-direction:row;
+  align-items:center;
+  justify-content:flex-end;
+}
+/*横向排列 右下*/
+.box_hrb{
+  flex-direction:row;
+  align-items:flex-end;
+  justify-content:flex-end;
+}
+
+
+
+/*横向排列 水平 物体之间和2测之间均分剩余空间  垂直：上*/
+.box_h_space_t{
+  flex-direction:row;
+  align-items:flex-start;
+  justify-content:space-around;
+}
+/*横向排列 水平 物体之间和2测之间均分剩余空间  垂直：居中*/
+.box_h_space_c{
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-around;
+}
+/*横向排列 水平 物体之间和2测之间均分剩余空间  垂直：下*/
+.box_h_space_b{
+  flex-direction:row;
+  align-items:flex-end;
+  justify-content:space-around;
+}
+/*横向排列 水平 物体之间均分剩余空间 物体左右贴紧边线  垂直：上*/
+.box_h_side_t{
+  flex-direction:row;
+  align-items:flex-start;
+  justify-content:space-between;
+}
+/*横向排列 水平 物体之间均分剩余空间 物体左右贴紧边线  垂直：居中*/
+.box_h_side_c{
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
+}
+/*横向排列 水平 物体之间均分剩余空间 物体左右贴紧边线  垂直：下*/
+.box_h_side_b{
+  flex-direction:row;
+  align-items:flex-end;
+  justify-content:space-between;
+}
+
+/*多行*/
+.box_lines{
+  flex-wrap:wrap;
+}
+
+.boxflex1{
+	flex:1;
+}
+.boxflex2{
+	flex:2;
+}
+
+
+
+
+
+
+.animate1{
+	/* width  height top bototm left right background-color opacity transform*/
+	transition-property:width;
+	/* 动画时间 */
+	transition-duration:200;	
+	/* 动画延迟 */
+	transition-delay:0;
+	/* ease  ease-in ease-out	ease-in-out	linear	cubic-bezier(x1, y1, x2, y2)*/
+	transition-timing-function:linear;
+}
+.animate2{
+	/* width  height top bototm left right background-color opacity transform*/
+	transition-property:opacity;
+	/* 动画时间 */
+	transition-duration:500;	
+	/* 动画延迟 */
+	transition-delay:0;
+	/* ease  ease-in ease-out	ease-in-out	linear	cubic-bezier(x1, y1, x2, y2)*/
+	transition-timing-function:linear;
+}
+
+.animate3{
+	/* width  height top bototm left right background-color opacity transform*/
+	transition-property:transform;
+	/* 动画时间 */
+	transition-duration:500;	
+	/* 动画延迟 */
+	transition-delay:0;
+	/* ease  ease-in ease-out	ease-in-out	linear	cubic-bezier(x1, y1, x2, y2)*/
+	transition-timing-function:linear;
+}
+
+
+.diandian{
+	text-overflow:ellipsis;
+}
+
+
+
+/* .breakall{
+  word-wrap:break-word;
+  word-break:break-all;
+} */
+
+/* .notbreak{
+  white-space:nowrap;
+} */
