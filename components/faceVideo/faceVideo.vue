@@ -165,6 +165,7 @@
 	.zz{
 		position: fixed; width: 100%; height: 100%; z-index:999999;
 		padding-bottom:200rpx; box-sizing: border-box;
+		left:0; top:0; background: rgba(0,0,0,0.7);
 	}
 	.body{
 		width: 552rpx;
