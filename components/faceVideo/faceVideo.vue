@@ -19,6 +19,7 @@
 
 <script>
 	import bas64ToLocatImg from './base64ToLocaalImg.js';
+	import authorize from './authorize.js';
 	export default {
 		props:{
 			times:{
@@ -50,7 +51,8 @@
 				console.log(oldVal,newVal)
 			}
 		},
-		onReady() {
+		async onReady() {
+			await authorize(['camera','record']);
 			this.createImg().then(rs=>{console.log(rs)});
 		},
 		methods: {
