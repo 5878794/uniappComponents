@@ -160,7 +160,7 @@
 </script>
 
 <style>
-	@import url("../../publish/box.css");
+	@import url("../publish/box.css");
 	.signature{ 
 		width: 100%; height: 100%;
 	}

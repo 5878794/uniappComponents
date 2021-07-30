@@ -1,0 +1,46 @@
+
+滚动加载区域
+
+html:
+<scroll-load
+    class="scroll_load"
+    bindLoadMoreFn="loadFn"
+    :canPushLoadMore="true"
+    id="scroll_dom"
+    ref='scroll_dom'
+>
+    list....
+</scroll-load>
+
+
+
+js:
+	import scrollLoad from '@/components/scroll-load.vue'
+
+	export default {
+    		components:{scrollLoad},
+    }
+
+    methods:{
+        fn(){
+            let rr = this.$refs.scroll_dom;
+            rr.noMoreData();
+            rr.XXXXXXXX
+        },
+        async loadFn(e){
+            //获取组件 也可以用$refs 获取
+            let obj = e.detail.component,
+                nowPage = this.pageIndex + 1;
+
+            await this.init(nowPage).then(rs=>{
+                if(rs >= this.pageSize){
+                    obj.loadMoreEnd();
+                }else{
+                    obj.noMoreData();
+                }
+            }).catch(e=>{
+                obj.loadMoreError();
+            });
+        }
+
+    }
