@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "usingComponents": {
+    "create-image": "/components/createImage/createImage"
+  }
+}

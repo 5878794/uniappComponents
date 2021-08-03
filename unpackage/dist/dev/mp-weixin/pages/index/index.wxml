@@ -1,0 +1,1 @@
+<create-image class="page" vue-id="8dd740cc-1" items="{{images}}" data-event-opts="{{[['^success',[['test']]]]}}" bind:success="__e" bind:__l="__l"></create-image>

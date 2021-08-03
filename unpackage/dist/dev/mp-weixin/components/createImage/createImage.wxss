@@ -1,0 +1,18 @@
+.main {
+  width: 100%;
+  height: 100%;
+}
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+.__canvas {
+  position: fixed;
+  left: -9999rpx;
+  top: -9999rpx;
+  width: 100vw;
+  height: 100vw;
+}
+
