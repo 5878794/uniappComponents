@@ -8008,9 +8008,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!*******************************************!*\
-  !*** /Users/bens/猫的/demo/demo/pages.json ***!
-  \*******************************************/
+/*!**************************************************!*\
+  !*** /Users/bens/猫的/uniappComponents/pages.json ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8156,173 +8156,17 @@ function normalizeComponent (
 /* 14 */,
 /* 15 */,
 /* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */
-/*!**********************************************************************!*\
-  !*** /Users/bens/猫的/demo/demo/components/createImage/createImage.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 30));
-var _imageHandler = _interopRequireDefault(__webpack_require__(/*! ../../lib/imageHandler */ 33));
-var _qrcode = _interopRequireDefault(__webpack_require__(/*! ../../lib/qrcode */ 34));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
-
-{
-  name: "createImage",
-  props: {
-    items: {
-      type: Array,
-      value: [] } },
-
-
-  watch: {
-    items: function items() {
-      // console.log('param change');
-      // this.init();
-    } },
-
-  mounted: function mounted() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var style;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-              _this.canvasId = '__createImage_canvas__';
-              _this.ctx = uni.createCanvasContext(_this.canvasId, _this);_context.next = 4;return (
-
-                _this.getCanvasStyle());case 4:style = _context.sent;
-              _this.width = style.width;
-              _this.height = style.height;
-              _this.winWidth = uni.getSystemInfoSync().windowWidth;
-
-              _this.init();case 9:case "end":return _context.stop();}}}, _callee);}))();
-  },
-  data: function data() {
-    return {
-      canvasItems: [],
-      style: '' };
-
-  },
-  methods: {
-    init: function init() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-                _this2.canvasItems = _this2.items;
-                _this2.clearCanvas();_context2.next = 4;return (
-                  _this2.draw());case 4:case "end":return _context2.stop();}}}, _callee2);}))();
-    },
-    getCanvasStyle: function getCanvasStyle() {var _this3 = this;
-      var query = uni.createSelectorQuery().in(this);
-      return new Promise(function (success) {
-        setTimeout(function (e) {
-          query.select('#' + _this3.canvasId).boundingClientRect(function (rs) {
-            success(rs);
-          }).exec();
-        }, 2000);
-
-      });
-    },
-    clearCanvas: function clearCanvas() {
-      this.ctx.clearRect(0, 0, this.width, this.height);
-    },
-
-    draw: function draw() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var i, l, thisItem, info, src, _info, outPath;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
-                i = 0, l = _this4.canvasItems.length;case 1:if (!(i < l)) {_context3.next = 23;break;}
-                thisItem = _this4.canvasItems[i];if (!(
-                thisItem.type == 'img')) {_context3.next = 10;break;}_context3.next = 6;return (
-                  _imageHandler.default.getImageInfo(thisItem.src));case 6:info = _context3.sent;
-                if (info) {
-                  _this4.drawImage(thisItem, info);
-                }_context3.next = 20;break;case 10:if (!(
-                thisItem.type == 'text')) {_context3.next = 14;break;}
-                _this4.drawText(thisItem);_context3.next = 20;break;case 14:if (!(
-                thisItem.type == 'qrcode')) {_context3.next = 20;break;}_context3.next = 17;return (
-
-                  _this4.drawQrCode(thisItem));case 17:src = _context3.sent;
-                _info = {
-                  path: src,
-                  width: _this4.winWidth,
-                  height: _this4.winWidth };
-
-
-                _this4.drawImage(thisItem, _info);case 20:i++;_context3.next = 1;break;case 23:
-
-
-                _this4.ctx.draw(true);_context3.next = 26;return (
-
-
-                  _imageHandler.default.canvasToTempFile(_this4.canvasId, _this4));case 26:outPath = _context3.sent;
-                _this4.$emit('success', outPath);case 28:case "end":return _context3.stop();}}}, _callee3);}))();
-    },
-    rpx2px: function rpx2px(val) {
-      return val / 750 * this.winWidth;
-    },
-    drawImage: function drawImage(data, img) {
-      var x = this.rpx2px(data.x),
-      y = this.rpx2px(data.y),
-      w = this.rpx2px(data.width),
-      h = this.rpx2px(data.height);
-      this.ctx.drawImage(img.path, 0, 0, img.width, img.height, x, y, w, h);
-    },
-    drawText: function drawText(data) {
-      var x = this.rpx2px(data.x),
-      y = this.rpx2px(data.y),
-      size = this.rpx2px(data.fontSize),
-      color = data.color,
-      text = data.text,
-      lineWidth = data.lineWidth;
-
-      this.ctx.setTextBaseline('top');
-      this.ctx.setFontSize(size);
-      this.ctx.setLineWidth(lineWidth);
-      this.ctx.setFillStyle(color);
-      this.ctx.fillText(text, x, y);
-    },
-    drawQrCode: function drawQrCode(data) {var _this5 = this;
-      var w = this.winWidth,
-      h = w,
-      url = data.src,
-      color = data.color || '#333,#fff';
-      color = color.split(',');
-
-      return new Promise(function (success, error) {
-        new _qrcode.default('__canvas_qrcode__', {
-          text: url,
-          usingIn: _this5,
-          // image:'/images/bg.jpg',
-          width: w,
-          height: h,
-          colorDark: color[0],
-          colorLight: color[1],
-          correctLevel: _qrcode.default.CorrectLevel.H,
-          callback: function callback(res) {
-            var path = res.path;
-            success(path);
-          } });
-
-      });
-
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */
+/* 17 */
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 31);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 18);
 
 /***/ }),
-/* 31 */
+/* 18 */
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -8353,7 +8197,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 32);
+module.exports = __webpack_require__(/*! ./runtime */ 19);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -8369,7 +8213,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 32 */
+/* 19 */
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9100,16 +8944,16 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 33 */
-/*!****************************************************!*\
-  !*** /Users/bens/猫的/demo/demo/lib/imageHandler.js ***!
-  \****************************************************/
+/* 20 */
+/*!***********************************************************!*\
+  !*** /Users/bens/猫的/uniappComponents/lib/imageHandler.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 30));
-var _authorize = _interopRequireDefault(__webpack_require__(/*! ./authorize */ 35));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 17));
+var _authorize = _interopRequireDefault(__webpack_require__(/*! ./authorize */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 
 {
   //获取图片信息  宽高等
@@ -9192,10 +9036,330 @@ var _authorize = _interopRequireDefault(__webpack_require__(/*! ./authorize */ 3
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 34 */
-/*!**********************************************!*\
-  !*** /Users/bens/猫的/demo/demo/lib/qrcode.js ***!
-  \**********************************************/
+/* 21 */
+/*!********************************************************!*\
+  !*** /Users/bens/猫的/uniappComponents/lib/authorize.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = _default;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
+//权限主动申请
+// scope	对应接口	描述
+// scope.userInfo	wx.getUserInfo	用户信息
+// scope.userLocation	wx.getLocation, wx.chooseLocation	地理位置
+// scope.userLocationBackground	wx.startLocationUpdateBackground	后台定位
+// scope.address	wx.chooseAddress	通讯地址（已取消授权，可以直接调用对应接口）
+// scope.invoiceTitle	wx.chooseInvoiceTitle	发票抬头（已取消授权，可以直接调用对应接口）
+// scope.invoice	wx.chooseInvoice	获取发票（已取消授权，可以直接调用对应接口）
+// scope.werun	wx.getWeRunData	微信运动步数
+// scope.record	wx.startRecord	录音功能
+// scope.writePhotosAlbum	wx.saveImageToPhotosAlbum, wx.saveVideoToPhotosAlbum	保存到相册
+// scope.camera	camera 组件	摄像头
+
+
+//申请 userLocation 权限时还需要在json中配置
+// "permission": {
+// 	"scope.userLocation": {
+// 		"desc": "你的位置信息将用于地图选点"
+// 	}
+// }
+
+//调用
+// import authorize from "../../lib/authorize";
+// await authorize('userInfo');
+var authsName = {
+  "userInfo": "用户信息",
+  "userLocation": "地理位置",
+  "userLocationBackground": "后台定位",
+  "address": "通讯地址",
+  "invoiceTitle": "发票抬头",
+  "invoice": "获取发票",
+  "werun": "微信运动步数",
+  "record": "录音功能",
+  "writePhotosAlbum": "保存到相册",
+  "camera": "摄像头" };
+
+
+
+var confirm = function confirm(msg, title, confirmText) {
+  msg = typeof msg == 'string' ? msg : JSON.stringify(msg);
+  confirmText = confirmText || "确定";
+  return new Promise(function (_success, error) {
+    title = title || "系统提示";
+    uni.showModal({
+      title: title,
+      content: msg,
+      confirmText: confirmText,
+      success: function success(res) {
+        if (res.confirm) {
+          _success();
+        } else if (res.cancel) {
+          error();
+        }
+      } });
+
+  });
+
+};
+
+var authorize = {
+  init: function init(key) {var _this2 = this;
+    return new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(success, error) {var setting, rs;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this2.getSysSetting());case 2:setting = _context.sent;if (
+
+                setting['scope.' + key]) {_context.next = 10;break;}_context.next = 6;return (
+
+                  _this2.setSysAuthorize(key));case 6:rs = _context.sent;
+
+                if (rs.state) {
+                  success();
+                } else {
+                  error();
+                }_context.next = 11;break;case 10:
+
+                success();case 11:case "end":return _context.stop();}}}, _callee);}));return function (_x, _x2) {return _ref.apply(this, arguments);};}());
+
+
+  },
+  //获取授权信息
+  getSysSetting: function getSysSetting() {
+    return new Promise(function (_success2) {
+      uni.getSetting({
+        success: function success(res) {
+          _success2(res.authSetting);
+        } });
+
+    });
+  },
+  //申请权限  同意、不同意都返回成功
+  setSysAuthorize: function setSysAuthorize(key) {
+    var _this = this;
+    return new Promise(function (_success3, error) {
+      uni.authorize({
+        scope: 'scope.' + key,
+        success: function success() {
+          // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
+          _success3({
+            state: true,
+            msg: '' });
+
+        },
+        fail: function fail(e) {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var text, rs;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                    text = '点击 “去设置” 按钮，打开 “' + authsName[key] + '” 的权限设置界面';_context2.next = 3;return (
+
+                      confirm(text, '权限申请', '去设置'));case 3:_context2.next = 5;return (
+
+                      _this.openSetting(key));case 5:rs = _context2.sent;
+                    if (rs.state) {
+                      _success3({
+                        state: true,
+                        msg: '' });
+
+                    } else {
+                      _success3({
+                        state: false,
+                        msg: rs.msg });
+
+                    }case 7:case "end":return _context2.stop();}}}, _callee2);}))();
+
+        } });
+
+    });
+  },
+  //打开权限设置页面  需要在tap事件中处理
+  openSetting: function openSetting(key) {
+    key = 'scope.' + key;
+    return new Promise(function (_success4, error) {
+      wx.openSetting({
+        success: function success(res) {
+          if (res.authSetting[key]) {
+            _success4({
+              state: true,
+              msg: '' });
+
+          } else {
+            _success4({
+              state: false,
+              msg: '未授权' });
+
+          }
+        },
+        fail: function () {var _fail = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(res) {var msg;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                    msg = '打开设置失败，请从小程序右上角打开。';
+                    _success4({
+                      state: false,
+                      msg: msg });case 2:case "end":return _context3.stop();}}}, _callee3);}));function fail(_x3) {return _fail.apply(this, arguments);}return fail;}() });
+
+
+
+    });
+  } };function _default(_x4) {return _ref2.apply(this, arguments);}function _ref2() {_ref2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(
+
+
+
+  function _callee4(opt) {return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
+              authorize.init(opt));case 2:return _context4.abrupt("return", _context4.sent);case 3:case "end":return _context4.stop();}}}, _callee4);}));return _ref2.apply(this, arguments);}
+;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */
+/*!*****************************************************************************!*\
+  !*** /Users/bens/猫的/uniappComponents/components/createImage/createImage.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 17));
+var _imageHandler = _interopRequireDefault(__webpack_require__(/*! ../../lib/imageHandler */ 20));
+var _qrcode = _interopRequireDefault(__webpack_require__(/*! ../../lib/qrcode */ 30));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+
+{
+  name: "createImage",
+  props: {
+    items: {
+      type: Array,
+      value: [] } },
+
+
+  watch: {
+    items: function items() {
+      // console.log('param change');
+      // this.init();
+    } },
+
+  mounted: function mounted() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var style;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+              _this.canvasId = '__createImage_canvas__';
+              _this.ctx = uni.createCanvasContext(_this.canvasId, _this);_context.next = 4;return (
+
+                _this.getCanvasStyle());case 4:style = _context.sent;
+              _this.width = style.width;
+              _this.height = style.height;
+              _this.winWidth = uni.getSystemInfoSync().windowWidth;
+
+              _this.init();case 9:case "end":return _context.stop();}}}, _callee);}))();
+  },
+  data: function data() {
+    return {
+      canvasItems: [],
+      style: '' };
+
+  },
+  methods: {
+    init: function init() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                _this2.canvasItems = _this2.items;
+                _this2.clearCanvas();_context2.next = 4;return (
+                  _this2.draw());case 4:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+    getCanvasStyle: function getCanvasStyle() {var _this3 = this;
+      var query = uni.createSelectorQuery().in(this);
+      return new Promise(function (success) {
+        setTimeout(function (e) {
+          query.select('#' + _this3.canvasId).boundingClientRect(function (rs) {
+            success(rs);
+          }).exec();
+        }, 2000);
+
+      });
+    },
+    clearCanvas: function clearCanvas() {
+      this.ctx.clearRect(0, 0, this.width, this.height);
+    },
+
+    draw: function draw() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var i, l, thisItem, info, src, _info, outPath;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                i = 0, l = _this4.canvasItems.length;case 1:if (!(i < l)) {_context3.next = 23;break;}
+                thisItem = _this4.canvasItems[i];if (!(
+                thisItem.type == 'img')) {_context3.next = 10;break;}_context3.next = 6;return (
+                  _imageHandler.default.getImageInfo(thisItem.src));case 6:info = _context3.sent;
+                if (info) {
+                  _this4.drawImage(thisItem, info);
+                }_context3.next = 20;break;case 10:if (!(
+                thisItem.type == 'text')) {_context3.next = 14;break;}
+                _this4.drawText(thisItem);_context3.next = 20;break;case 14:if (!(
+                thisItem.type == 'qrcode')) {_context3.next = 20;break;}_context3.next = 17;return (
+
+                  _this4.drawQrCode(thisItem));case 17:src = _context3.sent;
+                _info = {
+                  path: src,
+                  width: _this4.winWidth,
+                  height: _this4.winWidth };
+
+
+                _this4.drawImage(thisItem, _info);case 20:i++;_context3.next = 1;break;case 23:
+
+
+                _this4.ctx.draw(true);_context3.next = 26;return (
+
+
+                  _imageHandler.default.canvasToTempFile(_this4.canvasId, _this4));case 26:outPath = _context3.sent;
+                _this4.$emit('success', outPath);case 28:case "end":return _context3.stop();}}}, _callee3);}))();
+    },
+    rpx2px: function rpx2px(val) {
+      return val / 750 * this.winWidth;
+    },
+    drawImage: function drawImage(data, img) {
+      var x = this.rpx2px(data.x),
+      y = this.rpx2px(data.y),
+      w = this.rpx2px(data.width),
+      h = this.rpx2px(data.height);
+      this.ctx.drawImage(img.path, 0, 0, img.width, img.height, x, y, w, h);
+    },
+    drawText: function drawText(data) {
+      var x = this.rpx2px(data.x),
+      y = this.rpx2px(data.y),
+      size = this.rpx2px(data.fontSize),
+      color = data.color,
+      text = data.text,
+      lineWidth = data.lineWidth;
+
+      this.ctx.setTextBaseline('top');
+      this.ctx.setFontSize(size);
+      this.ctx.setLineWidth(lineWidth);
+      this.ctx.setFillStyle(color);
+      this.ctx.fillText(text, x, y);
+    },
+    drawQrCode: function drawQrCode(data) {var _this5 = this;
+      var w = this.winWidth,
+      h = w,
+      url = data.src,
+      color = data.color || '#333,#fff';
+      color = color.split(',');
+
+      return new Promise(function (success, error) {
+        new _qrcode.default('__canvas_qrcode__', {
+          text: url,
+          usingIn: _this5,
+          // image:'/images/bg.jpg',
+          width: w,
+          height: h,
+          colorDark: color[0],
+          colorLight: color[1],
+          correctLevel: _qrcode.default.CorrectLevel.H,
+          callback: function callback(res) {
+            var path = res.path;
+            success(path);
+          } });
+
+      });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 30 */
+/*!*****************************************************!*\
+  !*** /Users/bens/猫的/uniappComponents/lib/qrcode.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9628,175 +9792,6 @@ var QRCode;
 })();
 
 module.exports = QRCode;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-/* 35 */
-/*!*************************************************!*\
-  !*** /Users/bens/猫的/demo/demo/lib/authorize.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = _default;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 30));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
-//权限主动申请
-// scope	对应接口	描述
-// scope.userInfo	wx.getUserInfo	用户信息
-// scope.userLocation	wx.getLocation, wx.chooseLocation	地理位置
-// scope.userLocationBackground	wx.startLocationUpdateBackground	后台定位
-// scope.address	wx.chooseAddress	通讯地址（已取消授权，可以直接调用对应接口）
-// scope.invoiceTitle	wx.chooseInvoiceTitle	发票抬头（已取消授权，可以直接调用对应接口）
-// scope.invoice	wx.chooseInvoice	获取发票（已取消授权，可以直接调用对应接口）
-// scope.werun	wx.getWeRunData	微信运动步数
-// scope.record	wx.startRecord	录音功能
-// scope.writePhotosAlbum	wx.saveImageToPhotosAlbum, wx.saveVideoToPhotosAlbum	保存到相册
-// scope.camera	camera 组件	摄像头
-
-
-//申请 userLocation 权限时还需要在json中配置
-// "permission": {
-// 	"scope.userLocation": {
-// 		"desc": "你的位置信息将用于地图选点"
-// 	}
-// }
-
-//调用
-// import authorize from "../../lib/authorize";
-// await authorize('userInfo');
-var authsName = {
-  "userInfo": "用户信息",
-  "userLocation": "地理位置",
-  "userLocationBackground": "后台定位",
-  "address": "通讯地址",
-  "invoiceTitle": "发票抬头",
-  "invoice": "获取发票",
-  "werun": "微信运动步数",
-  "record": "录音功能",
-  "writePhotosAlbum": "保存到相册",
-  "camera": "摄像头" };
-
-
-
-var confirm = function confirm(msg, title, confirmText) {
-  msg = typeof msg == 'string' ? msg : JSON.stringify(msg);
-  confirmText = confirmText || "确定";
-  return new Promise(function (_success, error) {
-    title = title || "系统提示";
-    uni.showModal({
-      title: title,
-      content: msg,
-      confirmText: confirmText,
-      success: function success(res) {
-        if (res.confirm) {
-          _success();
-        } else if (res.cancel) {
-          error();
-        }
-      } });
-
-  });
-
-};
-
-var authorize = {
-  init: function init(key) {var _this2 = this;
-    return new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(success, error) {var setting, rs;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _this2.getSysSetting());case 2:setting = _context.sent;if (
-
-                setting['scope.' + key]) {_context.next = 10;break;}_context.next = 6;return (
-
-                  _this2.setSysAuthorize(key));case 6:rs = _context.sent;
-
-                if (rs.state) {
-                  success();
-                } else {
-                  error();
-                }_context.next = 11;break;case 10:
-
-                success();case 11:case "end":return _context.stop();}}}, _callee);}));return function (_x, _x2) {return _ref.apply(this, arguments);};}());
-
-
-  },
-  //获取授权信息
-  getSysSetting: function getSysSetting() {
-    return new Promise(function (_success2) {
-      uni.getSetting({
-        success: function success(res) {
-          _success2(res.authSetting);
-        } });
-
-    });
-  },
-  //申请权限  同意、不同意都返回成功
-  setSysAuthorize: function setSysAuthorize(key) {
-    var _this = this;
-    return new Promise(function (_success3, error) {
-      uni.authorize({
-        scope: 'scope.' + key,
-        success: function success() {
-          // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
-          _success3({
-            state: true,
-            msg: '' });
-
-        },
-        fail: function fail(e) {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var text, rs;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-                    text = '点击 “去设置” 按钮，打开 “' + authsName[key] + '” 的权限设置界面';_context2.next = 3;return (
-
-                      confirm(text, '权限申请', '去设置'));case 3:_context2.next = 5;return (
-
-                      _this.openSetting(key));case 5:rs = _context2.sent;
-                    if (rs.state) {
-                      _success3({
-                        state: true,
-                        msg: '' });
-
-                    } else {
-                      _success3({
-                        state: false,
-                        msg: rs.msg });
-
-                    }case 7:case "end":return _context2.stop();}}}, _callee2);}))();
-
-        } });
-
-    });
-  },
-  //打开权限设置页面  需要在tap事件中处理
-  openSetting: function openSetting(key) {
-    key = 'scope.' + key;
-    return new Promise(function (_success4, error) {
-      wx.openSetting({
-        success: function success(res) {
-          if (res.authSetting[key]) {
-            _success4({
-              state: true,
-              msg: '' });
-
-          } else {
-            _success4({
-              state: false,
-              msg: '未授权' });
-
-          }
-        },
-        fail: function () {var _fail = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(res) {var msg;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
-                    msg = '打开设置失败，请从小程序右上角打开。';
-                    _success4({
-                      state: false,
-                      msg: msg });case 2:case "end":return _context3.stop();}}}, _callee3);}));function fail(_x3) {return _fail.apply(this, arguments);}return fail;}() });
-
-
-
-    });
-  } };function _default(_x4) {return _ref2.apply(this, arguments);}function _ref2() {_ref2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(
-
-
-
-  function _callee4(opt) {return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
-              authorize.init(opt));case 2:return _context4.abrupt("return", _context4.sent);case 3:case "end":return _context4.stop();}}}, _callee4);}));return _ref2.apply(this, arguments);}
-;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
