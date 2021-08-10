@@ -10,7 +10,7 @@
 	        enhanced="true"
 	        refresher-default-style="white"
 	        paging-enabled="true"
-	        @crolltolower="bottomFn"
+	        @scrolltolower="bottomFn"
 	        @refresherrefresh="topFn"
 	>
 	    <slot></slot>
@@ -61,11 +61,12 @@
 		created(){
 			this.loadEnd = false;       //是否全部分页加载完成
 			this.bottomText = '正在加载中';
+
 		},
 		methods:{
 			topFn(){
 				this.isRefreshing = true;
-				uni.$emit('RefreshFn',{component:this})
+				this.$emit('RefreshFn')
 			},
 			bottomFn(){
 				if(this.loadingMore ||  //正在加载中
@@ -77,33 +78,33 @@
 				}
 				this.loadingMore = true;
 				this.hidden = '';
-			
-				uni.$emit('LoadMoreFn',{component:this})
+
+				this.$emit('loadMoreFn')
 			},
 			//刷新完成
 			refreshEnd(){
 				this.isRefreshing = false;
 				this.refreshState = false;
-			
+
 			},
 			//加载下一页完成
 			loadMoreEnd(){
 				this.loadingMore = false;
 				this.hidden = 'hidden';
-			
-	
+
+
 			},
 			//加载失败调用
 			loadMoreError(){
 				// this.loadingMore = false;
 				this.loadError = true;
-			
+
 			},
 			//加载完成  没有更多页面
 			noMoreData(){
 				this.loadingMore = false;
 				this.loadEnd = true;
-	
+
 				this.bottomText = '没有更多数据';
 				this.hiddenLoad = 'hidden';
 				this.hidden = '';
@@ -117,21 +118,24 @@
 				// console.log('bottomText:'+this.bottomText)
 				// console.log('refreshState:'+this.refreshState)
 				// console.log('canPushLoadMore:'+this.canPushLoadMore)
-	
+
 			},
 			//加载失败  点击重试
 			errReLoad(){
 				this.loadError = false;
-				uni.$emit('LoadMoreFn',{component:this})
+				this.$emit('LoadMoreFn')
 			}
 		}
 	}
 </script>
 
 <style>
-@import "../publish/box.css";
+@import "../../publish/box.css";
 
 
+.scroll-view{
+	width: 100%; height: 100%;
+}
 
 
 .bottom_info{

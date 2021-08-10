@@ -4,7 +4,7 @@
 html:
 <scroll-load
     class="scroll_load"
-    bindLoadMoreFn="loadFn"
+    @loadMoreFn="loadFn"
     :canPushLoadMore="true"
     id="scroll_dom"
     ref='scroll_dom'
@@ -20,24 +20,39 @@ js:
 	export default {
     		components:{scrollLoad},
     }
-
+    onLoad(){
+        this.getData();
+    },
     methods:{
-        fn(){
+        getData(pageIndex){
+            //....get....list...
+
+
+            let listRows = list.length;
+            if(pageIndex == 1){
+                this.list = list;
+            }else{
+                let oldList = this.list,
+                    newList = oldList.concat(list);
+
+                this.list = newList;
+            }
+
             let rr = this.$refs.scroll_dom;
-            rr.noMoreData();
-            rr.XXXXXXXX
+            if(listRows < this.pageSize){
+                rr.noMoreData();
+            }else{
+                rr.loadMoreEnd();
+            }
+
+            this.pageIndex = pageIndex;
         },
-        async loadFn(e){
-            //获取组件 也可以用$refs 获取
-            let obj = e.detail.component,
+        async loadFn(){
+            let obj = this.$refs.scroll_dom,
                 nowPage = this.pageIndex + 1;
 
-            await this.init(nowPage).then(rs=>{
-                if(rs >= this.pageSize){
-                    obj.loadMoreEnd();
-                }else{
-                    obj.noMoreData();
-                }
+            await this.getData(nowPage).then(rs=>{
+
             }).catch(e=>{
                 obj.loadMoreError();
             });
