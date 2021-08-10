@@ -4,10 +4,9 @@
 	        scroll-y="true"
 	        lower-threshold="200"
 	        scroll-with-animation="true"
-	        enable-back-to-top="true"
+	        enable-back-to-top="false"
 	        :refresher-enabled="canPullRefresh"
 	        :refresher-triggered="refreshState"
-	        enhanced="true"
 	        refresher-default-style="white"
 	        paging-enabled="true"
 	        @scrolltolower="bottomFn"
@@ -51,11 +50,11 @@
 		props:{
 			canPushLoadMore:{
 				type:Boolean,
-				value:false
+				default:true
 			},
 			canPullRefresh:{
 				type:Boolean,
-				value:false
+				default:false
 			}
 		},
 		created(){

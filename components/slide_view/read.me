@@ -1,0 +1,32 @@
+
+滑动事件监听dom
+ios上面横向滚动时 纵向会有点滚动 暂未处理
+
+
+
+html:
+<slide-view
+    class="slideView"
+    :dataId="item.id"
+    @slideRight="hideDel"
+    @slideLeft="showDel"
+
+    @slideUp=''
+    @slideDown=''
+>
+    dom......
+</slide-view>
+
+
+
+
+js:
+
+    import slideView from '../../components/slide_view/slide_view';
+
+    components:{
+        slideView
+    },
+    showDel(id){
+        // id:   dataId绑定的id
+    }
