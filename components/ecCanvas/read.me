@@ -1,0 +1,80 @@
+
+
+echart图表显示
+
+html:
+<uni-echarts
+    class="ec-canvas"
+    id="line-chart"
+    ref="canvas"
+    canvas-id="line-chart"
+    :ec="ec"
+></uni-echarts>
+
+
+css:
+.ec-canvas {
+    width: 750upx;
+    height: 750upx;
+    display: block;
+}
+
+
+js:
+import uniEcharts from '@/components/ecCanvas/ecCanvas';
+export default {
+    components: {
+        uniEcharts
+    },
+    data() {
+        return {
+            ec: {}
+        };
+    },
+    onReady() {
+        setTimeout(e=>{
+            let data = {
+                lazyload: true,
+                option :{
+                    grid:{
+                        left:0,top:0,right:0,bottom:0
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+
+                    },
+                    yAxis: {
+                        type: 'value',
+                        show:false,
+                    },
+                    series: [{
+                        data: [820, 932, 901, 934, 1290, 1330, 1320],
+                        type: 'line',
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: 'rgba(61, 126, 254, 0.8)' // 0% 处的颜色
+                                }, {
+                                    offset: 1, color: 'rgba(0, 215, 255, 0)' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        lineStyle:{
+                            color:'#3D7EFE',
+                            width:4
+                        }
+                    }]
+                }
+            }
+            this.ec = data;
+            this.$refs['canvas'].init();
+        },3000)
+    }
+}
