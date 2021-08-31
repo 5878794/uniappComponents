@@ -45,8 +45,7 @@
 		},
 		watch:{
 			per(){
-				console.log(this.per)
-				// this.init();
+				this.createArc();
             }
 		},
 
