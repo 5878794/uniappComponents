@@ -46,7 +46,7 @@ export default {
 					query.select('#'+this.canvasId).boundingClientRect(rs => {
 						success(rs);
 					}).exec();
-				},2000)
+				},0)
 
 			});
 		},
