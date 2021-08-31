@@ -1,0 +1,29 @@
+
+画圆弧  显示百分比
+
+html:
+<arc
+    class='arc'
+    :per='70'               //显示进度百分比       默认：0
+    color='#fff'            //线条颜色
+    bg='#333'               //背景线条颜色
+    bgLineWidth='5'         //背景线条宽度
+    lineWidth='8'           //线条宽度
+    startDeg='90'           //默认正右方为0deg开始的地方    默认0
+></arc>
+
+
+js:
+import arc from '../../components/arc/arc';
+export default {
+    components:{
+        arc
+    }
+}
+
+
+css:
+.arc{
+    width: 300rpx; height: 300rpx; display: block;
+    background: gold;
+}
