@@ -1,0 +1,28 @@
+
+
+圆盘显示分数
+
+html:
+<ui-progress1
+    title="大发放得分"
+    :per="per"
+></ui-progress1>
+
+
+js:
+import uiProgress1 from '../../components/HP_ui/progress1/progress'
+export default {
+    components: {
+        uiProgress1
+    },
+    data() {
+        return {
+            per:0
+        };
+    },
+    onReady() {
+        setTimeout(e=>{
+            this.per = 83;
+        },3000)
+    }
+}
