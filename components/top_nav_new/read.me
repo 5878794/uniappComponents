@@ -1,0 +1,54 @@
+<!-- 顶部模拟导航条 可透明 -->
+
+
+html:
+//固定颜色背景设置
+import topNav from '../../components/top_nav_new/top_nav';
+export default {
+    components: {
+        topNav
+    }
+}
+
+<top-nav
+    title='个人中心个人中心个人中心'    //页面标题
+    theme="black"           //字体箭头颜色  black/white
+    pageBg="#333"           //页面设置的背景色  page.json中  globalStyle.backgroundColor中设置的颜色
+    topBg="#fff"            //顶部固定条背景颜色
+    :showBack="true"        //是否显示后退按钮
+>
+    //左侧要插入的图标或文字按钮  在返回图标后
+    <image class="img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fphotoblog%2F1309%2F25%2Fc49%2F26316176_26316176_1380092693834_mthumb.jpg&refer=http%3A%2F%2Fimg.pconline.com.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1633144313&t=21cd72bcab6f82097c8dd8fa0c53e9b9"></image>
+</top-nav>
+
+
+//透明有背景图的设置
+//需要在页面单独引入mixins
+import topNav from '../../components/top_nav_new/top_nav';
+import topNavMixin from '../../components/top_nav_new/topNavMixin';
+export default {
+    components: {
+        topNav
+    },
+    mixins:[topNavMixin]
+}
+
+<view class="top____">          //包裹层  设置背景图
+    <top-nav
+            ref="top_nav"                    //固定写死 id  mixin里面会查找这个ref
+            title='个人中心个人中心个人中心'     //页面标题
+            theme="black"                    //字体箭头颜色  black/white
+            pageBg="transparent"             //设置透明必须
+            topBg="transparent"              //设置透明必须
+            moveBg="rgba(255,255,255,0)"     //必须rgba格式  滑动后会变成不透明
+            moveBgTop="50"                   //触发背景变不透明的高度
+            :useShim="true"                  //是否使用顶部垫片 会空出导航条的高度
+            :showBack="true"                 //是否显示后退按钮
+    >
+        //左侧要插入的图标或文字按钮  在返回图标后
+        <image class="img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fphotoblog%2F1309%2F25%2Fc49%2F26316176_26316176_1380092693834_mthumb.jpg&refer=http%3A%2F%2Fimg.pconline.com.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1633144313&t=21cd72bcab6f82097c8dd8fa0c53e9b9"></image>
+    </top-nav>
+
+    ...其他html
+
+</view>
