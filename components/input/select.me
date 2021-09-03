@@ -1,0 +1,23 @@
+
+
+单选
+
+
+html:
+<b-select
+        ref="input_text"
+        class="b_input"
+        placeholder="电话号码"
+        icon="/static/logo.png"
+        :selectData="selectData"
+        name="电话"
+        value="123"
+        rule="must,min:1,max:20,str"
+        err="请输入用户名"
+        textAlign='right'
+        @mychange='functionFn'
+></b-select>
+
+
+js:
+selectData= [{key:'',val:''},...]

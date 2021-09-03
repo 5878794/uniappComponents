@@ -1,0 +1,20 @@
+
+
+图片上传 显示
+
+
+html:
+<b-image
+    class=""
+    sizeType="compressed"
+    sourceType="album,camera"
+    placeholder="请选择图片"
+    :values="[{src:'/static/logo.png'}]"
+    ref="upload"
+    rule="must"
+    :disabled='false'               //是否可以编辑
+    :showDel="true"                  //显示删除
+    max="10"                        //最大数量
+    nowBtnStyle="color:red;"        //按钮样式
+>
+</b-image>></b-number>
