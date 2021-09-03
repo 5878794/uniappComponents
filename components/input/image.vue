@@ -64,7 +64,6 @@
 
 <script>
     import mixinFn from "./mixin/mixin";
-    import checkFn from "./mixin/inputCheck";
 
 	export default {
 		mixins:[mixinFn],
