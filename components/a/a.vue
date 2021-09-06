@@ -50,7 +50,6 @@
 	        	if(this.href == ''){
 	        		return;
                 }
-                console.log(this.target)
 	        	switch (this.target) {
                     case 'self':
 	                    uni.redirectTo({url:this.href});

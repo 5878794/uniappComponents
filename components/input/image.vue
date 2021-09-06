@@ -18,7 +18,7 @@
                 <!--        文件容器-->
                 <view
                     class="box_hlt box_lines"
-                    :style="(placeholder || icon)? 'padding:20rpx' :''"
+                    :style="(placeholder || icon)? 'padding:20rpx;box-sizing:border-box;' :''"
                 >
                     <block v-for="(item,index) in nowValues" :key="index">
                         <view
