@@ -1,0 +1,22 @@
+
+
+
+富文本显示
+
+
+html:
+<mp-html :content="html" />
+
+
+js:
+import mpHtml from '../../components/mp-html/mp-html';
+export default {
+    components:{
+        mpHtml
+    },
+    data(){
+        return {
+            html:'<p style="color:red;font-size:22px;">123123</p><img src="/static/logo.png"/>'
+        }
+    }
+}
