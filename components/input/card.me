@@ -1,0 +1,15 @@
+
+
+//上传身份证 或者 驾驶证  使用  只能上传一张
+//b_image的class中必须设置高度（autoHeight为false时）
+
+<b-card
+        class="b_image"
+        placeholder="身份证反面"
+        id="idcard2"
+        rule="must"
+        :autoHeight='true'          //设置后图片会根据身份证的宽高比自动设置图片大小  240*151
+        err="请上传身份证反面图片"
+></b-card>
+
+
