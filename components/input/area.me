@@ -1,0 +1,19 @@
+
+
+省市区选择  直接输出文本  再次选择不能默认选中上次的值
+不需要服务器端数据  （输入、输出都是中文，没有code）
+
+
+html:
+<b-area
+        ref="input_text"
+        class="b_input"
+        placeholder="电话号码"
+        icon="/static/logo.png"
+        name="电话"
+        value="123"
+        rule="must,min:1,max:20,str"
+        err="请输入用户名"
+        textAlign='right'
+        @mychange='functionFn'
+></b-area>
