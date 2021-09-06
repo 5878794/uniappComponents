@@ -1,0 +1,42 @@
+
+
+级联选择
+
+
+html:
+<b-multi-select
+    class="b_input"
+    icon="/static/logo.png"
+    type="multiSelector"
+    placeholder="电话号码"
+    name="电话"
+    ref="mselect"
+    :selectData="selectData111"         //select数据
+    :value="f"                          //   '22,223'
+    rule="must"
+    err="请输入用户名"
+    @mychange='functionFn'
+></b-multi-select>
+
+
+js:
+import bMultiSelect from '../../components/input/multiSelect';
+
+selectData111:[
+    {key:11,val:'a',children:[
+        {key:111,val:'a111',children:[
+            {key:331,val:'b333'}
+        ]}
+    ]},
+    {key:22,val:'b',children:[
+        {key:222,val:'b111',children:[
+            {key:332,val:'444'}
+        ]},
+        {key:223,val:'b222',children:[
+            {key:333,val:'555'}
+        ]}
+    ]}
+]
+
+f:'22,223'
+
