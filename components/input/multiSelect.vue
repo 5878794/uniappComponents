@@ -116,7 +116,7 @@
                 this.nowValue = selectIndex;
                 this.showText = selectText;
 
-
+                console.log(selectIndex)
                 this.onSuccess({
 	                detail:{
 	                	value:selectIndex
@@ -207,7 +207,6 @@
 			getSelectText(indexs){
 				let data = this.selectData,
 					back = [];
-
 				indexs.map(rs=>{
 					back.push(data[rs].val);
 					data = data[rs].children || [];
@@ -218,7 +217,6 @@
 
 
 			onSelect(e){
-	        	console.log(123)
 				let data = e.detail,
 					col = data.column,
 					val = data.value,
@@ -267,6 +265,8 @@
                     val = keys.join(',');
 
                 this.val = val;
+                this.setValue1(data);
+
                 this.$emit('mychange',{value:val});
 
 
