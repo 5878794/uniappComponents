@@ -116,7 +116,6 @@
                 this.nowValue = selectIndex;
                 this.showText = selectText;
 
-                console.log(selectIndex)
                 this.onSuccess({
 	                detail:{
 	                	value:selectIndex
