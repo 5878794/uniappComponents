@@ -1,0 +1,19 @@
+
+
+条形码扫码输入
+
+
+html:
+<b-scan
+    class="b_input"
+    icon="/static/logo.png"
+    placeholder="阿道夫"
+    name="扫码"
+    ref="scan"
+    value=""
+    rule="must"
+    :disabled="false"
+    err="请输入用户名"
+    clickIcon="../../images/5@1x.png"           //点击触发扫描的按钮 默认有可以不传
+    nowBtnStyle="width:200rpx;height:40rpx;"    //按钮样式  默认有可以不传
+></b-scan>
