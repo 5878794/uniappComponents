@@ -1,0 +1,42 @@
+
+
+图片裁剪  组件内部设置宽高为屏幕宽高
+这个组件单独做为一个页面
+
+html:
+<image-to-icon
+    imgSrc="https://5b0988e595225.cdn.sohucs.com/images/20190222/1d6df50f4f514b799c957ae4cd2dd004.jpeg"
+    cutWidth='100'          //裁剪框大小、最终生成图片大小
+    @success="tt"           //成功回调
+    @close="closeFn"        //取消回调
+></image-to-icon>
+
+
+
+js：
+import imageToIcon from "../../components/imageToIcon/imageToIcon";
+export default {
+    components:{
+        imageToIcon
+    },
+    data() {
+    },
+    methods: {
+        closeFn(){
+            sys.goBack();
+            console.log('close')
+        },
+        tt(res){
+            sys.runParentPage('fn',res);
+            sys.goBack();
+            console.log(res)
+        }
+    }
+}
+
+
+css:
+//禁止页面滚动
+page{
+    width: 100vw; height: 100vh; overflow: hidden;
+}
