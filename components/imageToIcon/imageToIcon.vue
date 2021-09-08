@@ -82,6 +82,7 @@
 		        this.canvasHeight = canvasInfo.height;
 		        this.canvas = canvasInfo.canvas;
 		        this.ctx = canvasInfo.ctx;
+		        this.dpr = canvasInfo.dpr;
 
                 this.rotates = 0;
 
@@ -121,10 +122,10 @@
                     0,
                     this.imgWidth,
                     this.imgHeight,
-	                imgPos.left,
-                    imgPos.top,
-                    imgSize.width,
-                    imgSize.height
+	                imgPos.left/this.dpr,
+                    imgPos.top/this.dpr,
+                    imgSize.width/this.dpr,
+                    imgSize.height/this.dpr
                 );
 
                 this.imgCatch = {
@@ -214,7 +215,7 @@
 
 		        this.ctx.clearRect(0,0,this.canvasWidth,this.canvasHeight);
 		        this.ctx.save();
-		        this.ctx.translate(this.canvasWidth/2,this.canvasHeight/2);
+		        this.ctx.translate(this.canvasWidth/2/this.dpr,this.canvasHeight/2/this.dpr);
 		        this.ctx.rotate(Math.PI*this.rotates/2);
 
 		        let imgSize,imgPos;
@@ -222,12 +223,12 @@
 			        imgSize = this.imgAutoRoom();
 			        imgPos = this.imgAutoCenter(imgSize);
 
-			        this.ctx.translate(-this.canvasWidth/2,-this.canvasHeight/2);
+			        this.ctx.translate(-this.canvasWidth/2/this.dpr,-this.canvasHeight/2/this.dpr);
 		        }else{
 			        imgSize = this.imgAutoRoom(true);
 			        imgPos = this.imgAutoCenter(imgSize,true);
 
-			        this.ctx.translate(-this.canvasHeight/2,-this.canvasWidth/2);
+			        this.ctx.translate(-this.canvasHeight/2/this.dpr,-this.canvasWidth/2/this.dpr);
 		        }
 
 
@@ -237,10 +238,10 @@
                     0,
                     this.imgWidth,
                     this.imgHeight,
-			        imgPos.left,
-			        imgPos.top,
-			        imgSize.width,
-			        imgSize.height
+			        imgPos.left/this.dpr,
+			        imgPos.top/this.dpr,
+			        imgSize.width/this.dpr,
+			        imgSize.height/this.dpr
                 );
 
 		        let rotatesed = (parseInt(this.rotates/2)==this.rotates/2);

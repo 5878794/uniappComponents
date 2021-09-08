@@ -15,9 +15,9 @@ export default {
 
 		canvas.width = width;
 		canvas.height = height;
-		// ctx.scale(dpr,dpr);
+		ctx.scale(dpr,dpr);
 
-		return {canvas,ctx,width,height}
+		return {canvas,ctx,width,height,dpr}
 	},
 	//获取canvas大小
 	[getCanvasSize](id,component){
