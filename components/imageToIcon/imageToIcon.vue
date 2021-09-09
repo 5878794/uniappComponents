@@ -68,7 +68,20 @@
         },
         watch:{
 	        imgSrc(src){
-	        	this.setImageInfo();
+	        	if(!this.isInit){return;}
+		        if(!src){return;}
+	        	this.setImageInfo().catch(e=>{
+	        		console.log(e)
+			        uni.showModal({
+				        title: '系统提示',
+				        content: '获取图片失败1111',
+				        showCancel:false,
+				        confirmText:'确定',
+				        success: function () {
+
+				        }
+			        });
+		        });
             }
         },
         mounted(){
@@ -76,6 +89,7 @@
         },
         methods:{
         	async init(){
+        		this.isInit = true;
         		//获取canvas信息并设置
         		let canvasInfo = await canvasLib.getCanvasInfo('__createImage_canvas__',this);
 		        this.canvasWidth = canvasInfo.width;
@@ -86,6 +100,7 @@
 
                 this.rotates = 0;
 
+		        if(!this.imgSrc){return;}
         	    await this.setImageInfo().catch(e=>{
 		            uni.showModal({
 			            title: '系统提示',
@@ -100,8 +115,6 @@
             },
             //设置图片缓存
 	        async setImageInfo(){
-        		if(!this.imgSrc){return;}
-
 		        let info = await canvasLib.loadImg(this.canvas,this.imgSrc);
 		        this.imgWidth = info.width;
 		        this.imgHeight = info.height;
