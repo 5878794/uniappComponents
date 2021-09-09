@@ -35,10 +35,10 @@
 				type:String,
 				default:''
 			},
-			showBack:{
-				type:Boolean,
-				default:false
-			},
+			// showBack:{
+			// 	type:Boolean,
+			// 	default:false
+			// },
             pageBg:{
 				type:String,
 	            default:''
@@ -72,7 +72,8 @@
                 catchNavStyle:'',
 			    navStyle:'',         //nav整体样式
 			    navStyle_:'',
-			    arrowStyle:''
+			    arrowStyle:'',
+			    showBack:false
             }
         },
 		async mounted(){
@@ -84,6 +85,7 @@
                 navHeight = wxBtnStyle.height+wxBtnStyle.top+6,
                 textColor = (this.theme == 'black')? '#000' :'#fff';
 
+			this.showBack = (getCurrentPages().length > 1);
 			this.rightStyle = `width:${wxBtnStyle.width}px;height:${wxBtnStyle.height}px;`;
 			this.leftStyle = this.rightStyle + `margin-left:${wxBtnRight}px;`;
 			this.rightStyle += `margin-right:${wxBtnRight}px;`;
