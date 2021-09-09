@@ -98,6 +98,7 @@
 	            this.leftStyle += 'width:auto;';
             }else{
             	this.navStyle += 'font-size:38rpx; font-weight: bold;';
+                this.centerStyle += 'text-align:center;';
             }
 
             let arrowBg = (this.theme == 'black')? blackArrow : whiteArrow;
