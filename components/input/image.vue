@@ -18,7 +18,7 @@
                 <!--        文件容器-->
                 <view
                     class="box_hlt box_lines"
-                    :style="(placeholder || icon)? 'padding:20rpx;box-sizing:border-box;' :''"
+                    :style="(placeholder || icon)? 'box-sizing:border-box;' :''"
                 >
                     <block v-for="(item,index) in nowValues" :key="index">
                         <view
@@ -26,7 +26,7 @@
                             :data-n="index"
                             @tap="showImage"
                         >
-                            <image class="image__" :src="item.src"></image>
+                            <image class="image__" mode="aspectFit" :src="item.src"></image>
                             <block v-if="showDelBtn">
                                 <view
                                     class="del"
