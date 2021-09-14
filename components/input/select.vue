@@ -89,7 +89,8 @@
 		        let newData = [],
 			        newKey = [],
 			        selected = this.value,
-			        selectIndex = '';
+			        selectIndex = '',
+                    catchData = {};
 
 
 		        data.map((rs,i)=>{
@@ -98,6 +99,8 @@
 			        }
 			        newData.push(rs.val.toString());
 			        newKey.push(rs.key.toString());
+
+			        catchData[rs.key] = rs;
 		        });
 
 
@@ -105,14 +108,17 @@
 		        this.selectKey = newKey;
 		        this.selectIndex = selectIndex;
 		        this.val = selected;
+		        this.catchData = catchData;
 	        },
 
 	        onSelect(e){
-                this.selectIndex = e.detail.value
+                this.selectIndex = e.detail.value;
 		        let val = this.getValue();
                 this.val = val;
 
-                this.$emit('mychange',{value:val});
+                let backData = this.catchData[val];
+
+                this.$emit('mychange',{value:val,data:backData});
 	        },
 
 	        getValue(){
