@@ -1,0 +1,13 @@
+
+图片视频自动识别容器
+
+
+html:
+src直接放图片或视频地址  自动识别
+注意：如果要点击跳转页面 需要设置 canFullScreen=false 在自己加  @tap='fn'
+
+<image-or-video
+    :canFullScreen="false"  //是否允许点击查看大图或全屏播放视频 默认true
+    class="temp"
+    src="https://5b0988e595225.cdn.sohucs.com/images/20190222/1d6df50f4f514b799c957ae4cd2dd004.jpeg"
+></image-or-video>

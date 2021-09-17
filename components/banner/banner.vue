@@ -130,7 +130,7 @@
             },
             //判断是否是图片
 			fileIsImg(src){
-				let exts = ',bmp,jpg,png,tif,gif,pcx,tga,exif,fpx,svg,psd,cdr,pcd,dxf,ufo,eps,ai,raw,WMF,webp,avif,apng,',
+				let exts = ',bmp,jpg,jpeg,png,tif,gif,pcx,tga,exif,fpx,svg,psd,cdr,pcd,dxf,ufo,eps,ai,raw,WMF,webp,avif,apng,',
                     ext = src.substr(src.lastIndexOf('.')+1);
 
 				return (exts.indexOf(','+ext+',')>-1);
