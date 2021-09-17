@@ -1,0 +1,32 @@
+
+
+仿电话本效果页面
+
+html:
+<telephone-book
+    class="main"
+    :showSearch = 'true'        //显示隐藏搜索  暂时没做
+    :showSelect = 'true'        //显示隐藏右边首字母跳转   暂时没做
+    :data="data"
+    @myclick="clickFn"          //点击列表  返回传入的数据data
+></telephone-book>
+
+
+js:
+import telephoneBook from "../../components/telephoneBook/telephoneBook";
+let data = [{
+    "id":2,
+    "name":"奥迪",        //必须传入
+    "ttt":111,
+    "icon":'/static/index_icon.png'  //暂时必须传入
+},...]
+
+
+css:
+page{
+    width: 100vw; height: 100vh;
+    overflow: hidden;
+}
+.main{
+    width: 100vw; height: 100vh;
+}
