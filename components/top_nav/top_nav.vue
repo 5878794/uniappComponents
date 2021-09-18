@@ -3,7 +3,7 @@
 
 
 <template>
-    <view>
+    <view style="width: 100%;">
         <view v-if="useShim" class="top_" :style="navStyle_"></view>
         <view class="box_hlc top" :style="navStyle">
             <view class="left box_hlc" :style="leftStyle">
@@ -11,7 +11,9 @@
                 <slot></slot>
             </view>
             <view class="boxflex1 diandian" :style="centerStyle">{{title}}</view>
-            <view class="right" :style="rightStyle"></view>
+            <view class="right box_hrc" :style="rightStyle">
+                <slot name="right"></slot>
+            </view>
         </view>
     </view>
 </template>
@@ -171,7 +173,7 @@
     .top{
         position: fixed; left:0; top:0; width: 100%;
         z-index: 10000000;
-        font-size: 38rpx;
+        font-size: 38rpx; box-sizing: border-box;
     }
 
 </style>
