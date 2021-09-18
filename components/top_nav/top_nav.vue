@@ -77,9 +77,19 @@
             }
         },
 		async mounted(){
-			let wxBtnStyle = uni.getMenuButtonBoundingClientRect(),
+			//#ifdef MP-WEIXIN
+			let isWxApp = true;
+			//#endif
+
+			//#ifndef MP-WEIXIN
+			let isWxApp = false;
+			//#endif
+
+
+			let wxBtnStyle = this.getWxBtnStyle(),
                 winStyle = await getWinInfo(),
-                isAndroid = (winStyle.system.toLocaleLowerCase().indexOf('ios') == -1),
+                //判断是否是android中的微信
+                isAndroid = (winStyle.system.toLocaleLowerCase().indexOf('ios') == -1 && isWxApp),
                 winWidth = winStyle.windowWidth,
                 wxBtnRight = winWidth - wxBtnStyle.right,
                 navHeight = wxBtnStyle.height+wxBtnStyle.top+6,
@@ -99,7 +109,10 @@
 	            this.navStyle += 'font-size:32rpx;';
 	            this.leftStyle += 'width:auto;';
             }else{
-            	this.navStyle += 'font-size:38rpx; font-weight: bold;';
+            	this.navStyle += 'font-size:38rpx;';
+            	if(isWxApp){
+		            this.navStyle += 'font-weight: bold;';
+                }
                 this.centerStyle += 'text-align:center;';
             }
 
@@ -109,6 +122,23 @@
 			this.catchNavStyle = this.navStyle;
         },
 		methods:{
+			getWxBtnStyle(){
+                //#ifdef MP-WEIXIN
+				return uni.getMenuButtonBoundingClientRect();
+                //#endif
+
+                //#ifndef MP-WEIXIN
+                return {
+	                bottom: 80,
+	                height: 32,
+	                left: 281,
+	                right: 368,
+	                top: 30,
+	                width: 87
+                };
+                //#endif
+
+            },
 			backFn(){
 				uni.navigateBack({delta:1});
 			},
