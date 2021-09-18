@@ -383,4 +383,6 @@
     flex-wrap:wrap;
 }
 
-
+.hover{
+    opacity: .7;
+}
