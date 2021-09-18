@@ -38,9 +38,9 @@
                         class="__input__ picker"
                         mode='date'
                         header-text="请选择"
-                        :range="selectValue"
                         :rule="rule"
                         :value="val"
+                        :fields="fields"
                         @change="onSelect"
                 >
                     <view class="temp__"></view>
@@ -74,7 +74,11 @@
 			end:{
 				type:String,
 				default:''
-			}
+			},
+			fields:{
+				type:String,
+                default:'day'       //year,month,day
+            }
 		},
 		data(){
 			return {
