@@ -64,18 +64,18 @@
         },
 		mounted(){
             if(this.see){
-            	this.showHidePassBtn = `background:url(${imgData.showPass}) no-repeat center center;background-size:40rpx;`;
+            	this.showHidePassBtn = `background:url(${imgData.showPass}) no-repeat center center;background-size:40rpx 40rpx;`;
             }
         },
         methods:{
 	        showHideBtnFn(){
                 if(this.showInput){
                 	//隐藏
-	                this.showHidePassBtn = `background:url(${imgData.showPass}) no-repeat center center;background-size:40rpx;`;
+	                this.showHidePassBtn = `background:url(${imgData.showPass}) no-repeat center center;background-size:40rpx 40rpx;`;
 	                this.showInput = false;
                 }else{
                     //显示
-	                this.showHidePassBtn = `background:url(${imgData.hidePass}) no-repeat center center;background-size:40rpx;`;
+	                this.showHidePassBtn = `background:url(${imgData.hidePass}) no-repeat center center;background-size:40rpx 40rpx;`;
 	                this.showInput = true;
                 }
             }
@@ -90,6 +90,7 @@
     .showHidePass{
         width: 40rpx; height: 100%;
         padding: 0 20rpx;
+        background-size: 40rpx 40rpx !important;
 
     }
 </style>
