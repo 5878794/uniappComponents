@@ -1,0 +1,11 @@
+
+
+微信小程序 设置本地图片为背景  （目前只测试咯微信小程序 和app）
+注：在线图片就不要用该组件
+
+<background
+    class="main box_slt"        元素自身class  不要设置padding，否则内部容器设置的背景会有留白
+    boxType='box_hlc'           内部元素使用的盒模型  需要 ../../publish/box.css
+    bg="/static/login_bg.png"   要设置的背景图片地址
+    mode="100% auto"            要设置背景图片平铺方式，同background-size
+></background>
