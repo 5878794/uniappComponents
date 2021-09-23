@@ -300,7 +300,6 @@
 				}
 				this.titleHeight = domHeight;
 				this.tops = tops;
-				console.log(this.tops)
 			},
 			//滚动事件
 			scrollFn(e){
