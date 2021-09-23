@@ -90,7 +90,7 @@
 	        },
 	        values:{
 		        type:Array,
-		        default:[]
+		        default(){return []}
 	        }
         },
         data(){
