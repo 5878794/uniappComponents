@@ -49,6 +49,7 @@
 .show_text{
     /*position: absolute; left:10rpx; top:0; right:20rpx; bottom:0;*/
     font-size: 28rpx;
+    padding:0 10rpx;
     /*padding-right: 34rpx;*/
 }
 .show_text .diandian{
