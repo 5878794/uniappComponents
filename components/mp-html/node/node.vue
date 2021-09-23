@@ -51,7 +51,7 @@
           </block>
         </view>
       </view>
-      
+
       <!-- 富文本 -->
       <!-- #ifdef H5 || MP-WEIXIN || MP-QQ || APP-PLUS || MP-360 -->
       <rich-text v-else-if="handler.use(n)" :id="n.attrs.id" :style="n.f" :nodes="[n]" />
@@ -350,7 +350,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 /* a 标签默认效果 */
 ._a {
   padding: 1.5px 0 1.5px 0;

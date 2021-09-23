@@ -414,7 +414,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* #ifndef APP-PLUS-NVUE */
 /* 根节点样式 */
 ._root {

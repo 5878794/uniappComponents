@@ -166,7 +166,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
     .ec-canvas {
         width: 100%;
         height: 100%;

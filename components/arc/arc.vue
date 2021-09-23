@@ -106,7 +106,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
     .canvas{
         display: block; width: 100%; height: 100%;
     }

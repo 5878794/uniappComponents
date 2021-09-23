@@ -104,7 +104,7 @@
 
 
 
-<style>
+<style scoped>
     @import "../../publish/box.css";
     ._main{
         width: 100%; height: 100%;

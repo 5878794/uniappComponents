@@ -445,7 +445,7 @@
 </script>
 
 
-<style>
+<style scoped>
     @import "../../publish/box.css";
     .page{
         width: 100vw; height: 100vh; position: relative;

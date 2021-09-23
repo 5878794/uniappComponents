@@ -42,7 +42,7 @@
 		methods:{
 			startFn(e){
 				if(this.isComplate){return}
-				
+
 				this.isTouchStart = true;
 				this.points = [];
 				let point = this.getPointXY(e);
@@ -50,15 +50,15 @@
 			},
 			moveFn(e){
 				if(!this.isTouchStart){return;}
-				
+
 				let point = this.getPointXY(e);
 				this.points.push(point);
-				
+
 				this.handlerBtn();
 			},
 			endFn(){
 				this.isTouchStart = false;
-				
+
 				//获取最后的长度
 				if(this.width > this.minEndWidth){
 					//触发成功
@@ -74,12 +74,12 @@
 				}
 			},
 			getPointXY(e){
-			
+
 				let point = e.changedTouches || [];
 				point = point[0] || {};
-				
+
 				let x = point.screenX || point.clientX;
-				
+
 				return x;
 			},
 			handlerBtn(){
@@ -88,17 +88,17 @@
 					sP = points[l-2],
 					eP = points[l-1];
 				if(l<2){return;}
-				
-				
+
+
 				let mX = eP - sP,
 					nowWidth = this.width + mX;
-				
+
 				nowWidth = (nowWidth>375)? 375 : nowWidth;
 				nowWidth = (nowWidth<100)? 100 : nowWidth;
-				
+
 				this.width = nowWidth;
 				this.styleX = 'width:'+this.width+'px';
-				
+
 				// console.log(this.x)
 			},
 			triggerCallBack(){
@@ -112,12 +112,12 @@
 				this.animateClass = 'animate1';
 				this.width = width;
 				this.styleX = 'width:'+this.width+'px';
-				
+
 				setTimeout(()=>{
 					this.animateClass = '';
 				},200)
 			},
-			
+
 			goBack(){
 				this.isComplate = false;
 				this.showTextClass = '';
@@ -129,8 +129,8 @@
 </script>
 
 
-<style src="@/publish/all_nvue.css"></style>
-<style>
+<style scoped src="@/publish/all_nvue.css"></style>
+<style scoped>
 	.slide_btn{
 		width: 750rpx; height: 110rpx;
 		background-color: #B6B6B6;
@@ -149,7 +149,7 @@
 	}
 	.slide_btn_btn_icon{
 		width: 38rpx; height: 28rpx;
-		position: absolute; top:41rpx; 
+		position: absolute; top:41rpx;
 		right:80rpx;
 	}
 	.showText{

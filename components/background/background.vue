@@ -98,7 +98,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
     @import "../../publish/box.css";
     .body{
         width: 100%; height: 100%;

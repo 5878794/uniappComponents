@@ -342,7 +342,7 @@
 
 
 
-<style>
+<style scoped>
 	@import "../../publish/box.css";
 
 	._main{

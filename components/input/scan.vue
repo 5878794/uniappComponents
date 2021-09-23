@@ -83,7 +83,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
     @import "../../publish/box.css";
     @import "./mixin/publish.css";
 
@@ -95,4 +95,4 @@
     .isBtn{
         width:30rpx; height: 30rpx;
     }
-</style>
+</stylescoped>

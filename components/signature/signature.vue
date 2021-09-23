@@ -2,10 +2,10 @@
 	<view class='box_hlt signature' ref='signature'>
 		<view class='box_slt control'>
 			<view class='colors boxflex1 box_sct'>
-				<view 
-					@tap='changeColorFn' 
-					:data-item='item' 
-					hover-class="hover" 
+				<view
+					@tap='changeColorFn'
+					:data-item='item'
+					hover-class="hover"
 					v-for='(item,index) in pageColors'
 					class='color'
 					:data-n='index'
@@ -23,7 +23,7 @@
 			<canvas
 				class='canvas'
 				id='canvas1'
-				canvas-id='canvas1' 
+				canvas-id='canvas1'
 				disable-scroll='true'
 				@touchstart='startFn'
 				@touchmove='moveFn'
@@ -32,8 +32,8 @@
 			></canvas>
 		</view>
 	</view>
-	
-	
+
+
 </template>
 
 <script>
@@ -59,7 +59,7 @@
 			// 	console.log(oldVal,newVal)
 			// }
 		},
-	
+
 		onReady(){
 			this.init();
 		},
@@ -70,13 +70,13 @@
 					tempArray = new Array(l);
 					tempArray[0] = 'select';
 				this.selectColor = tempArray;
-				
+
 				 this.ctx = uni.createCanvasContext('canvas1',this);
 				 this.ctx.lineWidth = 4;
 				 this.ctx.lineCap = "round"
 				 this.ctx.lineJoin = "round"
 				 this.ctx.setStrokeStyle('#333');
-			
+
 			},
 			startFn(e){
 				this.points = [];
@@ -87,9 +87,9 @@
 			},
 			moveFn(e){
 				if(!this.hasTouch){return;}
-				
+
 				let p = this.getPointXY(e);
-				
+
 				this.points.push(p);
 				if(this.points.length >= 2){
 					this.draw();
@@ -98,7 +98,7 @@
 			endFn(e){
 				this.points = [];
 				this.hasTouch = false;
-				
+
 			},
 			getPointXY(e){
 				e = (e.touches)? e.touches[0] : e;
@@ -135,9 +135,9 @@
 				let color = e.currentTarget.dataset.item,
 					n = e.currentTarget.dataset.n;
 				this.ctx.setStrokeStyle(color);
-				
+
 				let l = this.pageColors.length;
-				
+
 				this.selectColor = new Array(l);
 				this.selectColor[n] = 'select'
 			},
@@ -159,9 +159,9 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	@import url("../publish/box.css");
-	.signature{ 
+	.signature{
 		width: 100%; height: 100%;
 	}
 	.control{

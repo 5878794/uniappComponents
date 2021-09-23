@@ -38,7 +38,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
     @import "../../publish/box.css";
     @import "./mixin/publish.css";
 </style>

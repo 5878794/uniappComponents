@@ -45,7 +45,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
     @import "../../../publish/box.css";
 
     .item{

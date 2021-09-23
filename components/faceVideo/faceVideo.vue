@@ -4,11 +4,11 @@
 			<view class='title'>人脸识别</view>
 			<view class='camera_body'>
 				<camera
-					class='camera' 
-					mode="normal" 
-					device-position="front" 
-					flash="off" 
-					@error="error" 
+					class='camera'
+					mode="normal"
+					device-position="front"
+					flash="off"
+					@error="error"
 				></camera>
 				<cover-image :src='imgSrc' class='cover_img'></cover-image>
 			</view>
@@ -63,16 +63,16 @@
 			startRecord(){
 				if(this.canTap){return;}
 				this.btnText = '识别中';
-				
+
 				let camera = uni.createCameraContext(this),
 					_this = this;
-				
+
 				this.canTap = 'notCanTap';
-					
+
 				camera.startRecord({
 					timeoutCallback:30,
 					success(){
-						
+
 					},
 					fail(e){
 						_this.error('识别失败');
@@ -80,8 +80,8 @@
 						_this.canTap = '';
 					}
 				});
-				
-	
+
+
 				setTimeout(e=>{
 					camera.stopRecord({
 						compressed:true,
@@ -96,7 +96,7 @@
 						}
 					});
 				},this.times*1000)
-				
+
 			},
 			error(msg){
 				msg = msg || '用户未授权';
@@ -114,9 +114,9 @@
 				    title: '识别中',
 					mask:true
 				});
-				
+
 				let _this = this;
-				
+
 				uni.uploadFile({
 					url: this.uploadServerUrl, //仅为示例，非真实的接口地址
 					filePath: path,
@@ -148,7 +148,7 @@
 			},
 			uploadOk(){
 				// this.show = false;
-				
+
 				this.$emit('success','');
 				// console.log('success');
 			},
@@ -160,7 +160,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	@import url("../../publish/box.css");
 	.zz{
 		position: fixed; width: 100%; height: 100%; z-index:999999;
@@ -169,7 +169,7 @@
 	}
 	.body{
 		width: 552rpx;
-		padding:0 97rpx 30rpx 97rpx; 
+		padding:0 97rpx 30rpx 97rpx;
 		background: #fff;
 		box-sizing: border-box;
 	}

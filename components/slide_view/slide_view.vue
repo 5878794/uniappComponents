@@ -156,7 +156,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 
     .test{
         width: 100%; height: auto; display: block;
