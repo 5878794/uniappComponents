@@ -95,8 +95,11 @@
 			}
 		},
 		watch:{
-			data(){
+			async data(){
 				this.handlerData();
+
+				let bodyOffset = await this.getDomStyle('scroll');
+				this.bodyTop = bodyOffset.top;
 			},
 			list(){
 				let _this = this;
@@ -107,7 +110,8 @@
 				});
 			}
 		},
-		async onReady(){
+
+		async mounted(){
 			this.scrollTop = 0;
 			this.tops = [];
 			if(this.data.length ==0){return;}
@@ -115,9 +119,6 @@
 
 			let bodyOffset = await this.getDomStyle('scroll');
 			this.bodyTop = bodyOffset.top;
-		},
-		async mounted(){
-			// this.handlerData();
 		},
 		methods:{
 			getDomStyle(id){
@@ -189,7 +190,6 @@
 				this.select = this.setChoosePY(sPy);
 
 				this.fdName = this.PY[0];
-
 			},
 
 
@@ -300,6 +300,7 @@
 				}
 				this.titleHeight = domHeight;
 				this.tops = tops;
+				console.log(this.tops)
 			},
 			//滚动事件
 			scrollFn(e){
@@ -348,7 +349,7 @@
 	@import "../../publish/box.css";
 
 	._main{
-		width: 100%; height: 100%;
+		width: 100%; height: 100%; position: relative;
 	}
 	._search{
 		width: 640rpx; height: 70rpx; margin: 20rpx auto;
@@ -358,7 +359,7 @@
 		background: #fff;
 	}
 	._scroll_main{
-		position: relative;
+		position: absolute; left:0; right:0; bottom:0; top: 110rpx;
 		overflow: hidden;
 	}
 	._body{
