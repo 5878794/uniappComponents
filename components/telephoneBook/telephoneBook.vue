@@ -308,7 +308,7 @@
 					pyNumber = this.PY.length,
 					newArray = new Array(pyNumber),
 					tops = this.tops,
-					n=0;
+					n=newArray.length-1;
 
 				this.scrollTop = top;
 
