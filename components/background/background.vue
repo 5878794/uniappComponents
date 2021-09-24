@@ -57,7 +57,7 @@
 	                src = await this.getBase64(src);
                 }
 
-	            this.viewStyle = `background-image:url(${src});background-size:${this.mode};`;
+	            this.viewStyle = `background-image:url(${src});background-size:${this.mode};background-repeat:no-repeat;`;
 
 
 
