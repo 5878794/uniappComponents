@@ -11,10 +11,12 @@ html:
     placeholder="请选择图片"
     :values="[{src:'/static/logo.png'}]"
     ref="upload"
+    inRef='upload'                  //传入ref的值，在mychange中会返回这个inRef的值
     rule="must"
     :disabled='false'               //是否可以编辑
     :showDel="true"                  //显示删除
     max="10"                        //最大数量
     nowBtnStyle="color:red;"        //按钮样式
+    @mychange='fn'      //返回当前value
 >
 </b-image>

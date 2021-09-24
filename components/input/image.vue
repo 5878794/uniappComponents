@@ -91,7 +91,11 @@
 	        values:{
 		        type:Array,
 		        default(){return []}
-	        }
+	        },
+	        inRef:{
+	        	type:String,
+                default:''
+            }
         },
         data(){
 		    return {
@@ -124,6 +128,9 @@
 					val.push(rs.src);
 				});
 				this.val = val.join(',');
+
+				let t = this.inRef;
+				this.$emit('mychange',{value:this.val,ref:t});
 			},
 			chooseImage(e){
 				//判断点击的添加按钮还是图像本身
