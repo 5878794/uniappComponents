@@ -20,7 +20,7 @@
 				<view id="scroll_body">
 					<block v-for="(item,index) in list" :key="index">
 						<view v-if="!item.type" class="_item box_hlc" :data-data="item" @tap="itemClickFn">
-							<image :src="item.icon" class="_img"></image>
+							<image v-if="item.icon" :src="item.icon" class="_img"></image>
 							<view class="_name boxflex1 diandian">{{item.name}}</view>
 						</view>
 						<view v-else class="_title box_hlc" :id="item.name">{{item.name}}</view>
@@ -44,6 +44,7 @@
 				</view>
 			</view>
 			<view
+					v-if="fdName"
 				class="_fd_title"
 				:style="fdStyle"
 			>{{fdName}}</view>
@@ -189,7 +190,7 @@
 				this.PY = sPy;
 				this.select = this.setChoosePY(sPy);
 
-				this.fdName = this.PY[0];
+				this.fdName = this.PY[0] || '';
 			},
 
 
@@ -261,6 +262,8 @@
 
 				this.list = this.sortData(backData);
 				this.PY = tempPy;
+
+				this.fdName = this.PY[0] || '';
 			},
 
 			//点击字母 滚动到指定位置
@@ -382,6 +385,9 @@
 	._py{
 		width: 100%; font-size: 24rpx;
 		color: #333;
+	}
+	._name{
+		padding-left: 20rpx;
 	}
 	._title{
 		width: 620rpx;
