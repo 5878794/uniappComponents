@@ -39,6 +39,10 @@ export default {
 		unit:{
 			type:String,
 			default:''
+		},
+		inRef:{
+			type:String,
+			default:''
 		}
 	},
 	data(){
@@ -65,7 +69,7 @@ export default {
 	methods: {
 		onInput(e){
 			this.val = e.detail.value;
-			this.$emit('mychange',{value:e.detail.value});
+			this.$emit('mychange',{value:e.detail.value,ref:this.inRef});
 		},
 
 		setValue(value){

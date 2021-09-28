@@ -125,7 +125,7 @@
 
                 let backData = this.catchData[val];
 
-                this.$emit('mychange',{value:val,data:backData});
+                this.$emit('mychange',{value:val,data:backData,ref:this.inRef});
 	        },
 
 	        getValue(){
@@ -147,7 +147,7 @@
                 this.val = val;
 
 		        let backData = this.catchData[val];
-		        this.$emit('mychange',{value:val,data:backData});
+		        this.$emit('mychange',{value:val,data:backData,ref:this.inRef});
 	        }
         }
 	}
