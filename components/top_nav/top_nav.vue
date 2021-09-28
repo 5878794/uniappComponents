@@ -80,63 +80,88 @@
         },
 		async mounted(){
 			//#ifdef MP-WEIXIN
-			let isWxApp = true;
+			let isWxApp = true,
+				isLiuHaiScreen = false;
 			//#endif
 
 			//#ifndef MP-WEIXIN
-			let isWxApp = false;
+			let isWxApp = false,
+				isLiuHaiScreen = plus.navigator.hasNotchInScreen();
 			//#endif
 
 
-			let wxBtnStyle = this.getWxBtnStyle(),
-                winStyle = await getWinInfo(),
-                //判断是否是android中的微信
-                isAndroid = (winStyle.system.toLocaleLowerCase().indexOf('ios') == -1 && isWxApp),
+			let winStyle = await getWinInfo(),
+				//判断是否是android
+				isAndroid = (winStyle.system.toLocaleLowerCase().indexOf('ios') == -1),
+                wxBtnStyle = this.getWxBtnStyle(winStyle.windowWidth,isLiuHaiScreen),
+
                 winWidth = winStyle.windowWidth,
                 wxBtnRight = winWidth - wxBtnStyle.right,
                 navHeight = wxBtnStyle.height+wxBtnStyle.top+6,
                 textColor = (this.theme == 'black')? '#000' :'#fff';
 
 			this.showBack = (getCurrentPages().length > 1);
-			this.rightStyle = `width:${wxBtnStyle.width}px;height:${wxBtnStyle.height}px;`;
-			this.leftStyle = this.rightStyle + `margin-left:${wxBtnRight}px;`;
-			this.rightStyle += `margin-right:${wxBtnRight}px;`;
-			this.centerStyle = `margin:0 ${wxBtnRight}px;color:${textColor};`;
+			this.rightStyle = `width:${wxBtnStyle.width}px;height:${wxBtnStyle.height}px;text-align:right;`;
+			this.leftStyle = this.rightStyle + `padding-left:${wxBtnRight}px;`;
+			this.rightStyle += `padding-right:${wxBtnRight}px;`;
+			this.centerStyle = `padding:0 ${wxBtnRight}px;color:${textColor};`;
 
-            this.navStyle = `width:100%;height:${navHeight}px;box-sizing:border-box;padding-top:${wxBtnStyle.top}px;padding-bottom:6px;`;
+            this.navStyle = `width:100%;height:${navHeight}px;box-sizing:border-box;padding-bottom:6px;`;
+            if(!isWxApp){
+            	this.navStyle += `padding-top:${wxBtnStyle.top-10}px;`;
+            }else{
+            	this.navStyle += `padding-top:${wxBtnStyle.top}px;`;
+            }
+
             this.navStyle_ = (this.pageBg)? this.navStyle+`background:${this.pageBg};` : this.navStyle;
             this.navStyle += `background:${this.topBg};`;
 
-            if(isAndroid){
-	            this.navStyle += 'font-size:32rpx;';
-	            this.leftStyle += 'width:auto;';
-            }else{
-            	this.navStyle += 'font-size:38rpx;';
-            	if(isWxApp){
-		            this.navStyle += 'font-weight: bold;';
+            if(isWxApp){
+            	if(isAndroid){
+		            this.navStyle += 'font-size:32rpx;';
+		            this.leftStyle += 'width:auto;';
+                }else{
+		            this.navStyle += 'font-size:38rpx;font-weight: bold;';
+		            this.centerStyle += 'text-align:center;';
                 }
-                this.centerStyle += 'text-align:center;';
+            }else{
+            	if(isAndroid){
+		            this.navStyle += 'font-size:38rpx;';
+		            this.centerStyle += 'text-align:center;';
+                }else{
+            		if(isLiuHaiScreen){
+			            this.navStyle += 'font-size:32rpx;';
+                    }else{
+			            this.navStyle += 'font-size:38rpx;';
+                    }
+		            this.centerStyle += 'text-align:center;';
+                }
             }
+
 
             let arrowBg = (this.theme == 'black')? blackArrow : whiteArrow;
             this.arrowStyle = `background:url(${arrowBg});background-size:100%;`;
 
 			this.catchNavStyle = this.navStyle;
+
         },
 		methods:{
-			getWxBtnStyle(){
+			getWxBtnStyle(winWidth,isLiuHaiScreen){
                 //#ifdef MP-WEIXIN
 				return uni.getMenuButtonBoundingClientRect();
                 //#endif
 
                 //#ifndef MP-WEIXIN
+                //判断是否是刘海屏
+                let top = (isLiuHaiScreen)? 55 : 35;
+
                 return {
 	                bottom: 80,
 	                height: 32,
-	                left: 281,
-	                right: 368,
-	                top: 30,
-	                width: 87
+	                left: winWidth-117,
+	                right: winWidth-10,
+	                top: top,
+	                width: 100
                 };
                 //#endif
 
