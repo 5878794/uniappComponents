@@ -163,7 +163,7 @@ let checkFn = function(val,rule){
 		this_val = val || '',
 		err = false;
 
-	that_rule = that_rule.split(",");
+	that_rule = (that_rule)? that_rule.split(",") : [];
 
 	//非必填 过
 	if(that_rule.indexOf("must") == -1 && this_val.length == 0){

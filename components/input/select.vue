@@ -32,6 +32,7 @@
                 <view v-if="unit" class="unit">{{unit}}</view>
 
                 <picker
+                        v-if="!disabled"
                         :disabled="disabled"
                         class="__input__ picker"
                         mode='selector'
@@ -59,7 +60,9 @@
         props:{
 	        selectData:{
 		        type:Array,
-		        default:[]
+		        default:function(){
+		        	return [];
+                }
 	        },
 	        arrow:{
 		        type:Boolean,
@@ -75,16 +78,14 @@
         },
         watch:{
 	        selectData: function (params) {//  'params'是要监听的字段，（params）是已更新变化后的数据
-		        this.init();
+		        this.init(this.selectData);
 	        }
         },
 		mounted(){
-			this.init();
+			this.init(this.selectData);
         },
 		methods:{
-	        init(){
-	        	let data = this.selectData;
-
+	        init(data){
 		        //处理select
 		        let newData = [],
 			        newKey = [],
@@ -109,7 +110,13 @@
 		        this.selectIndex = selectIndex;
 		        this.val = selected;
 		        this.catchData = catchData;
+
 	        },
+
+            //手动设置select选择项
+            setSelectData(data){
+	        	this.init(data);
+            },
 
 	        onSelect(e){
                 this.selectIndex = e.detail.value;
@@ -126,20 +133,27 @@
 	        },
 
 	        setValue(value){
-		        if(!value){return;}
-		        let index = this.selectKey.indexOf(value.toString());
+	        	let index = 0;
+		        if(!value){
+
+                }else{
+			        index = this.selectKey.indexOf(value.toString());
+                }
+
 		        if(index == -1){return;}
 
                 this.selectIndex = index;
 		        let val = this.getValue();
                 this.val = val;
-		        this.$emit('mychange',{value:val});
+
+		        let backData = this.catchData[val];
+		        this.$emit('mychange',{value:val,data:backData});
 	        }
         }
 	}
 </script>
 
-<style scoped>
+<style>
     @import "../../publish/box.css";
     @import "./mixin/publish.css";
 
