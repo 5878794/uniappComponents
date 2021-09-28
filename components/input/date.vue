@@ -99,8 +99,21 @@
 				let val = e.detail.value;
 				this.val = val;
 
-				this.$emit('mychange',{value:val});
+				this.$emit('mychange',{value:val,ref:this.inRef});
 			},
+
+            //处理月 日前没有0的问题
+            dateHandler(){
+	            let val = this.val;
+	            val = (val)? val.split('-') : [];
+	            let newVal = [];
+	            val.map(rs=>{
+		            let t = (rs<10)? '0'+rs : rs;
+		            newVal.push(t);
+	            });
+
+                return newVal.join('-');
+            },
 
 			getValue(){
 				return this.val;
@@ -110,7 +123,7 @@
 				if(!value){return;}
 
 				this.val = value;
-				this.$emit('mychange',{value:value});
+				this.$emit('mychange',{value:value,ref:this.inRef});
 			}
 		}
 	}
