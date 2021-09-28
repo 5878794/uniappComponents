@@ -44,7 +44,6 @@
 				</view>
 			</view>
 			<view
-					v-if="fdName"
 				class="_fd_title"
 				:style="fdStyle"
 			>{{fdName}}</view>
