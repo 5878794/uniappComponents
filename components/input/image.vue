@@ -95,6 +95,14 @@
 	        inRef:{
 	        	type:String,
                 default:''
+            },
+	        uploadFileFnName:{
+	        	type:String,
+                default:''
+            },
+            selectNumber:{
+	        	type:Number,
+                default:1
             }
         },
         data(){
@@ -135,26 +143,37 @@
 			chooseImage(e){
 				//判断点击的添加按钮还是图像本身
 				let n = e.currentTarget.dataset.n,
-					_this = this;
+					_this = this,
+                    chooseNumber = (this.selectNumber > 9)? 9 : this.selectNumber;
 
 
 				uni.chooseImage({
-					count:1,
+					count:chooseNumber,
 					sizeType:this.sizeType.split(','),
 					sourceType:this.sourceType.split(','),
-					success:async function(rs){
-						let file = rs.tempFiles[0],
-							src = file.path,
-							size = file.size;
+					success:async function(data){
+						data = data.tempFiles || [];
+						for(let i=0,l=data.length;i<l;i++){
+							let file = data[i],
+								src = file.path,
+								size = file.size;
 
+							//配置咯oss上传参数的请求接口直接上传
+							if(_this.uploadFileFnName){
+								src = await _this.$parent[_this.uploadFileFnName](src);
+								if(!src){
+									return;
+                                }
+							}
 
-						let oldValue = _this.nowValues || [];
-						if(n || n==0){
-							oldValue[n] = {src,size};
-						}else{
-							oldValue.push({src,size});
-						}
-						_this.nowValues = oldValue;
+							let oldValue = _this.nowValues || [];
+							if(n || n==0){
+								oldValue[n] = {src,size};
+							}else{
+								oldValue.push({src,size});
+							}
+							_this.nowValues = oldValue;
+                        }
 						_this.setNowValue();
 					}
 				});
@@ -221,6 +240,7 @@
 					current: nowShowSrc
 				});
 			}
+
 		}
 	}
 </script>

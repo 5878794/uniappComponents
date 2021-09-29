@@ -18,5 +18,22 @@ html:
     max="10"                        //最大数量
     nowBtnStyle="color:red;"        //按钮样式
     @mychange='fn'      //返回当前value
+    :selectNumber='2'       //一次能选择几张图片 超过9最大9  默认1
+    uploadFileFnName='uploadImg'    //设置该参数在选择图片后会执行该参数上传文件
+                                    //异步函数内需要return 文件的服务器src
 >
 </b-image>
+
+
+<script>
+    import all from '../../lib/all';
+    export default{
+        methods:{
+            async uploadImg(src){
+                //这个方法是小舒写的上传接口方式
+                return await all.uploadImg(src);
+            }
+        }
+    }
+
+</script>
