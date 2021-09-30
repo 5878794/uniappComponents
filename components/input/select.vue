@@ -134,7 +134,7 @@
 
 	        setValue(value){
 	        	let index = 0;
-		        if(!value){
+		        if(!value && value!=0){
 
                 }else{
 			        index = this.selectKey.indexOf(value.toString());
