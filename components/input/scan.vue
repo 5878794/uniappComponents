@@ -87,6 +87,9 @@
     @import "../../publish/box.css";
     @import "./mixin/publish.css";
 
+    .placeholder_style{
+        color: #ccc;
+    }
     .image_body{
         padding:0 15rpx 0 10rpx;
         height: 80rpx;
@@ -95,4 +98,4 @@
     .isBtn{
         width:30rpx; height: 30rpx;
     }
-</stylescoped>
+</style>

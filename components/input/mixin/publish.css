@@ -9,7 +9,7 @@
 .name{
     min-width: 95rpx;
     box-sizing: border-box;
-    font-size: 32rpx;
+    font-size: 28rpx;
     color: #222223;
 }
 
@@ -35,13 +35,13 @@
     display: block;
     height: 100%;
     /*height: 80rpx; line-height: 80rpx;*/
-    font-size: 32rpx; color: #333; box-sizing: border-box;
+    font-size: 28rpx; color: #333; box-sizing: border-box;
     padding:0 10rpx;
     text-align: right;
 }
 .__input_textarea__{
     display: block; line-height: 50rpx;
-    font-size: 32rpx; color: #333; box-sizing: border-box;
+    font-size: 28rpx; color: #333; box-sizing: border-box;
     padding:10rpx 0;
     width:auto; min-height: 70rpx; height: 100%;
 }
@@ -107,12 +107,12 @@
 
 .placeholder_style{
     color: #ccc !important;
-    font-size:32rpx;
+    font-size:28rpx;
 }
 
 .unit{
     font-size: 28rpx;
-    padding-right: 10rpx;
+    /*padding-right: 10rpx;*/
     color: #999;
     width: 40rpx;
     text-align: center;
