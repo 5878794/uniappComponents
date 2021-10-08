@@ -78,10 +78,18 @@
         },
         watch:{
 	        selectData: function (params) {//  'params'是要监听的字段，（params）是已更新变化后的数据
-		        this.init(this.selectData);
+	        	this.init(this.selectData);
+
 	        }
         },
+		updated(){
+			this.isReady = true;
+			if(this.catchSetVal){
+				this.setValue(this.catchSetVal);
+			}
+        },
 		mounted(){
+			// console.log('mounted '+this.inRef)
 			this.init(this.selectData);
         },
 		methods:{
@@ -133,6 +141,12 @@
 	        },
 
 	        setValue(value){
+	        	if(!this.isReady){
+	        		this.catchSetVal = value;
+	        		return;
+                }
+	        	this.catchSetVal = '';
+
 	        	let index = 0;
 		        if(!value && value!=0){
 
