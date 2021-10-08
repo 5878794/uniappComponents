@@ -58,6 +58,12 @@ export default {
 			this.val = val;
 		}
 	},
+	updated(){
+		this.isReady = true;
+		if(this.catchSetVal){
+			this.setValue(this.catchSetVal);
+		}
+	},
 
 	mounted(){
 		this.placeholder1 = this.placeholder;
@@ -73,6 +79,12 @@ export default {
 		},
 
 		setValue(value){
+			if(!this.isReady){
+				this.catchSetVal = value;
+				return;
+			}
+			this.catchSetVal = '';
+
 			this.val = value;
 		},
 
