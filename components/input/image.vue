@@ -31,7 +31,7 @@
                                 <view
                                     class="del"
                                     :data-n="index"
-                                    @tap="del"
+                                    @tap.stop="del"
                                 >删除</view>
                             </block>
                         </view>
@@ -203,6 +203,13 @@
 
 			//设置value用
 			setValue(value){
+				if(!this.isReady){
+					this.catchSetVal = value;
+					return;
+				}
+				this.catchSetVal = '';
+
+
 				this.val = value;
 
 				let newValue = (value)? value.split(',') : [];
