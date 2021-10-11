@@ -213,6 +213,7 @@
 					})
 				});
 				this.nowValues = backVal;
+				this.setNowValue();
 			},
 
 			getImageInfo(src){
