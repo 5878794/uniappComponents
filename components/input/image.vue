@@ -184,7 +184,7 @@
 					imgObj = this.nowValues[n] || {},
 					imgSrc = imgObj.src,
 					allImages = [];
-				this.values.map(rs=>{
+				this.nowValues.map(rs=>{
 					allImages.push(rs.src);
 				});
 
