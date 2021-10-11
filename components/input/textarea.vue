@@ -2,12 +2,12 @@
 <template>
     <view class="box_slc" style="height:100%;">
         <view class="box_hlc body">
-            <view class="input_body box_hlc boxflex1" :class="disabledClass">
+            <view class="input_body box_hlt boxflex1" :class="disabledClass">
 
                 <!--            判断是否有图标-->
                 <image v-if="icon" class="icon_" :src="icon"></image>
 
-                <view v-if="name" class="name">{{name}}</view>
+                <view v-if="name" class="name textarea_name">{{name}}</view>
 
                 <textarea
                         :style="textAlign__"

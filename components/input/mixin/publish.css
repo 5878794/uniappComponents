@@ -45,6 +45,9 @@
     padding:10rpx 0;
     width:auto; min-height: 70rpx; height: 100%;
 }
+.textarea_name{
+    padding:15rpx 0;
+}
 
 .show_text{
     /*position: absolute; left:10rpx; top:0; right:20rpx; bottom:0;*/
