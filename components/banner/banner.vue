@@ -19,7 +19,7 @@
                     <image
                         v-if="item.isImg"
                         class="banner_img"
-                        mode="aspectFit"
+                        mode="aspectFill"
                         :src="item.src"
                     ></image>
                     <video
