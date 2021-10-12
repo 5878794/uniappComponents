@@ -21,6 +21,17 @@ import pageScrollMixin from '../../components/pageScrollLoad/pageScrollLoadMixin
 export default {
     components:{pageScrollLoad},
     mixins:[pageScrollMixin],
+
+    //必须onReady onLoad可能获取不到obj
+    onReady(){
+        //初始数据加载。。。。。
+
+
+        //需要调用开始监听函数
+        let obj = this.$refs.pageScrollLoad;
+        obj.startEventListener();
+    },
+
     methods: {
         loadFn(){
             ....ajax获取数据

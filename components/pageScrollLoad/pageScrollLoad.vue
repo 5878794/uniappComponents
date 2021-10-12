@@ -52,11 +52,19 @@
                 showErr:false
 			}
 		},
-		mounted(){
-
-		},
 		methods:{
+			startEventListener(){
+				this.canRun = true;
+            },
+            endEventListener(){
+				this.canRun = false;
+            },
+
 			loadFn(){
+				if(!this.canRun){
+					return;
+                }
+
 				if(this.isLoading){
 					return;
                 }
@@ -87,7 +95,7 @@
 			},
 			//加载完成  没有更多页面
 			noMoreData(){
-				this.isLoading = true;
+				this.endEventListener();
 
 				this.showLoading = false;
 				this.showEnd = true;
