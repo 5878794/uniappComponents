@@ -1,0 +1,43 @@
+
+
+页面滚动下拉加载
+
+
+html：
+<page-scroll-load
+    loadingText="加载中..."          //各种状态的文字
+    loadingEndText="没有更多数据咯"
+    loadErrText="加载失败，点击"
+    ref="pageScrollLoad"            //写死
+    @loadMoreFn="loadFn"            //触发加载下一页的函数
+></page-scroll-load>
+
+
+js：
+import pageScrollLoad from '../../components/pageScrollLoad/pageScrollLoad';
+import pageScrollMixin from '../../components/pageScrollLoad/pageScrollLoadMixin';
+
+
+export default {
+    components:{pageScrollLoad},
+    mixins:[pageScrollMixin],
+    methods: {
+        loadFn(){
+            ....ajax获取数据
+
+
+            //数据调用完成需要调用相应的状态
+            let obj = this.$refs.pageScrollLoad;
+
+            //加载失败调用
+            // obj.loadMoreError();
+
+            //加载成功调用
+            // obj.loadMoreEnd();
+
+            //没数据咯调用
+            //obj.noMoreData();
+
+        }
+    }
+}
