@@ -12,7 +12,9 @@
             :interval="interval"
             :duration="duration"
             :previous-margin="previousMargin"
-            :next-margin="nextMargin">
+            :next-margin="nextMargin"
+            @animationfinish="changeEndFn"
+    >
         <block v-for="(item,index) in srcs_" :key="index">
             <swiper-item class="swiper_item">
                 <view class="banner_list box_hcc" :data-data="item" @tap="onclick">
@@ -144,6 +146,12 @@
 			            url:href
 		            })
 	            }
+            },
+			changeEndFn(e){
+				let now = e.detail.current+1,
+					total = this.srcs.length;
+
+				this.$emit('changeEnd',{now,total});
             }
 		}
 	}

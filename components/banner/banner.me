@@ -10,7 +10,7 @@ banner切换  支持视频、图片   无href属性不会跳转
 <b-banner
     id="banner"
     :srcs="srcs"            //见上面
-
+    @changeEnd="changeEndFn"  //切换结束返回当前显示的 now/total 数据
     indicatorDots=""        //是否显示点     默认：true
     indicatorColor=""       //指示点颜色     默认：rgba(0, 0, 0, .3)
     indicatorActiveColor="" //当前选中的指示点颜色  默认：#000000
