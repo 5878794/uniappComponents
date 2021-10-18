@@ -266,7 +266,9 @@
                 this.val = val;
                 this.setValue1(data);
 
-                this.$emit('mychange',{value:val});
+                let text = this.showText;
+                text = text.split(' ').join(',');
+                this.$emit('mychange',{value:val,text:text});
 
 
 			},
