@@ -279,6 +279,8 @@
                 let selectNumber = this.getSelectNumber(),
                     selectIndex = this.getSelectIndex(value,selectNumber);
 
+                this.val = value.join(',');
+
                 this.setValue1(selectIndex);
 			}
 
