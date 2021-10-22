@@ -1,0 +1,23 @@
+
+
+tab切换
+
+
+<tab-nav
+    //tab文字   ['全部','代发货','发货1'],
+    :list="tabs"
+    //未读数字   [1,1,1]
+    :showNumber="tabsNumber"
+    //横向滚动
+    :scrollX="false"
+    //组件样式
+    style="display:block; width: 100%; height: 100rpx; background: yellow;"
+    //选中字体样式 默认值是下面的
+    selectStyle="color:red;"
+    //字体样式 默认值是下面的
+    itemStyle="font-size:32rpx; color:#333; font-weight:bold;"
+    //气泡样式  默认值是下面的
+    numberStyle='color:#fff;background:red;'
+    //点击返回序列号  0开始
+    @clickFn="tapFn"
+></tab-nav>
