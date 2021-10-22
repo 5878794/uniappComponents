@@ -10,9 +10,9 @@
                 <view v-if="name" class="name">{{name}}</view>
 
                 <view class="boxflex1 box_hrc">
-                    <view class="add" hover-class="hover" @tap="addFn">+</view>
-                    <view class="number__">{{val}}</view>
                     <view class="lessen" hover-class="hover" @tap="lessenFn">-</view>
+                    <view class="number__">{{val}}</view>
+                    <view class="add" hover-class="hover" @tap="addFn">+</view>
                 </view>
 
 
