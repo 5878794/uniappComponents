@@ -123,6 +123,15 @@
 			errReLoad(){
 				this.loadError = false;
 				this.$emit('LoadMoreFn')
+			},
+			//重新开始加载  tab切换后用
+			loadMoreRestart(){
+				this.loadingMore = false;
+				this.loadEnd = false;
+
+				this.bottomText = '正在加载中';
+				this.hiddenLoad = '';
+				this.hidden = 'hidden';
 			}
 		}
 	}

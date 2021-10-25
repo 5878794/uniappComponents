@@ -110,6 +110,14 @@
 				this.showErr = false;
 
 				this.$emit('loadMoreFn');
+			},
+			//重新开始加载  tab切换后用
+			loadMoreRestart(){
+				this.isLoading = false;
+
+				this.showLoading = false;
+				this.showEnd = false;
+				this.showErr = false;
 			}
 		}
 	}
