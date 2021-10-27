@@ -17,25 +17,55 @@
     >
         <block v-for="(item,index) in srcs_" :key="index">
             <swiper-item class="swiper_item">
-                <view class="banner_list box_hcc" :data-data="item" @tap="onclick">
+                <view class="banner_list box_hcc" :data-n="index" :data-data="item" @tap="onclick">
+<!--                    是app-->
+                    <!-- #ifdef APP-PLUS -->
+                    <block v-if="item.isImg">
+                        <image
+                            class="banner_img"
+                            mode="aspectFill"
+                            :src="item.src"
+                        ></image>
+                    </block>
+                    <block v-else>
+                        <image
+                            class="banner_img"
+                            mode="aspectFill"
+                            :src="item.poster"
+                        ></image>
+                        <view class="playVideo" :style="playImg"></view>
+                        <video
+                            :src="item.src"
+                            :id="'video'+index"
+                            class="video_"
+                            @fullscreenchange="videoEventFn"
+                        ></video>
+                    </block>
+                    <!-- #endif -->
+
+
+<!--                    非app-->
+                    <!-- #ifndef APP-PLUS -->
                     <image
-                        v-if="item.isImg"
-                        class="banner_img"
-                        mode="aspectFill"
-                        :src="item.src"
+                            v-if="item.isImg"
+                            class="banner_img"
+                            mode="aspectFill"
+                            :src="item.src"
                     ></image>
                     <video
-                        v-else
-                        class="banner_img"
-                        :src="item.src"
-                        :autoplay="true"
-                        :loop="true"
-                        :muted="true"
-                        :controls="false"
-                        :show-play-btn="false"
-                        :show-center-play-btn="false"
-                        :enable-progress-gesture="false"
+                            v-else
+                            class="banner_img"
+                            :src="item.src"
+                            :autoplay="true"
+                            :loop="true"
+                            :muted="true"
+                            :controls="false"
+                            :show-play-btn="false"
+                            :show-center-play-btn="false"
+                            :enable-progress-gesture="false"
                     ></video>
+                    <!-- #endif -->
+
                 </view>
             </swiper-item>
         </block>
@@ -45,6 +75,8 @@
 
 
 <script>
+    let playImg = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAdZJREFUaEPtlz1LA0EQQOf9JhsLC1OKhY0IoiiS3sJCEWxESMTGQmu/ChHSiShWBiSFINhYWFhob6eFXWTgFoJNbnd2cxu4g6uys/PezM7lDhnzizHnl1qg6g7WHag7YKyA9xHq9/vTIqL3J3BqzG8ODxF4KAQ0eUdE2sCLmSRwgxCB/r9cPyLSAtqBDKawGAIO4LHoxp2JyDM4poBLfQSse3IEL08hoDDvxbFKPuSpBFxFdcibwHdwiYcEphbQ9EmHfBQCg0O+AnzE7MYoBRz3IbARS6IKATfki8CzVaQqAcd9AaxaJKoWcEM+D9yHiOQg4LhvgVlfiZwEHPsScFlWJEcBZX8CJstI5Cqg7B1gYZhEzgJdoDGuAj1gahi8/p5jB+aA6zLwuQmcAM2y4G5dDh34EpEG8OoLn0MHtoCDEPCqO9ATkeUYr9ZVHCF9C72yVH0wdpQCJyKiR0bPfLRrFAIKvAbcRKMe2Ci1QEtE9oDfFPApn0I6pDtANxV4yqfQNrCfGjyFgP7963Exf+f6yMeYAR3SXeDYJ3GstSECWuGJAkC/nLTqb7GAfPcJEZgRkU0ROQfOfBPGXu8tEBvAul8tYK2gNb7ugLWC1vi6A9YKWuP/ADcYvDHue2tkAAAAAElFTkSuQmCC';
+
 	export default {
 		props:{
 			//是否显示点
@@ -106,7 +138,8 @@
 		},
 		data(){
 			return {
-				srcs_:[]
+				srcs_:[],
+				playImg:''
 			}
 		},
         watch:{
@@ -116,6 +149,8 @@
         },
 		mounted(){
 			this.handlerSrc();
+
+			this.playImg = `background-image:url(${playImg}); background-size:48rpx 48rpx;background-repeat:no-repeat;background-position:center center;`;
 		},
 		methods:{
 			handlerSrc(){
@@ -139,13 +174,33 @@
             },
             onclick(e){
 	            let data = e.currentTarget.dataset.data,
-		            href = data.href;
+		            href = data.href,
+                    index = e.currentTarget.dataset.n,
+                    id = 'video'+index,
+                    isImg = data.isImg;
 
-	            if(href){
-		            uni.navigateTo({
-			            url:href
-		            })
-	            }
+	            //是视频
+	            if(!isImg){
+                    this.video = uni.createVideoContext(id,this);
+                    this.video.requestFullScreen();
+
+                }else{
+		            if(href){
+			            uni.navigateTo({
+				            url:href
+			            })
+		            }
+                }
+            },
+            //全屏和退出全屏时触发
+			videoEventFn(e){
+				let isFullScreen = e.target.fullScreen;
+				if(isFullScreen){
+					this.video.play();
+                }else{
+					this.video.pause();
+                }
+
             },
 			changeEndFn(e){
 				let now = e.detail.current+1,
@@ -172,8 +227,20 @@
     }
     .banner_list{
         display: block; width: 100%; height: 100%;
+        position: relative;
     }
     .banner_img{
         display: block; width: 100%; height: 100%;
+    }
+    .playVideo{
+        display:block; width:100rpx; height:100rpx;
+        position: absolute; left:50%; top:50%;
+        margin-top:-50rpx; margin-left:-50rpx;
+        background-color: rgba(0,0,0,.5);
+        border-radius: 20rpx;
+    }
+    .video_{
+        display: block; width: 0rpx; height: 0rpx;
+        opacity: 0;
     }
 </style>
