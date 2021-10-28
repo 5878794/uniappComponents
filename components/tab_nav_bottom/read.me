@@ -1,0 +1,46 @@
+
+
+底部模拟的 tabbar
+
+
+html:
+tab-nav-bottom(:obj="tabBottomNav")
+
+
+
+js:
+import tabNavBottom from "../../components/tab_nav_bottom/tabNavBottom";
+
+export default {
+    components: {tabNavBottom},
+    data(){
+        return {
+            tabBottomNav:{
+                color: "#90939D",           //字体颜色
+                selectedColor: "#FE3E69",   //选中时的字体颜色
+                backgroundColor: "#fff",    //背景色
+                list:[
+                    {
+                        //文字
+                        text:'拼团活动',
+                        //图标
+                        iconPath:'/static/collage/icon1.png',
+                        //选中时图标
+                        selectedIconPath:'/static/collage/icon1_.png',
+                        //跳转页面
+                        pagePath:'/pages/collage/index',
+                        //当前是否选中
+                        selected:true
+                    },
+                    {
+                        text:'我的拼团',
+                        iconPath:'/static/collage/icon2.png',
+                        selectedIconPath:'/static/collage/icon2_.png',
+                        pagePath:'/pages/collage/my',
+                        selected:false
+                    }
+                ]
+            }
+        }
+    }
+}
