@@ -1,0 +1,25 @@
+
+
+选择需要页面跳转返回数据
+
+处理完后自己赋值
+this.$refs.input_text.setValue({key:1,val:"测试"});
+
+
+html:
+<b-page-select
+        ref="input_text"
+        class="b_input"
+        placeholder="电话号码"
+        icon="/static/logo.png"
+        selectPage="/pages/index/index"     //要打开的页面
+        name="电话"
+        :value='{key:1,val:"测试"}'
+        rule="must,min:1,max:20,str"
+        err="请输入用户名"
+        textAlign='right'
+        @mychange='functionFn'
+></b-page-select>
+
+
+
