@@ -29,18 +29,16 @@
 				type: [String,Number],
 				default: 500
 			},
-			data:{
-				type:Object,
-                default(){
-					return {};
-                }
+			index:{
+				type:[String,Number],
+                default:''
             }
 		},
-		created(){
-
+		mounted(){
 		},
 		methods:{
 			touchstart:function(e){
+
 				this.isTouched = true;
 				this.clearPoint();
 				this.savePoint(e);
@@ -134,26 +132,29 @@
 				// var myEventDetail = {}; // detail对象，提供给事件监听函数
 				// var myEventOption = {}; // 触发事件的选项
                 // this.triggerEvent('slideright', myEventDetail, myEventOption)
-				this.$emit('slideRight',this.data);
+				this.$emit('slideRight',this.index);
 			},
 			slideLeftFn(e){
 				// var myEventDetail = {}; // detail对象，提供给事件监听函数
 				// var myEventOption = {}; // 触发事件的选项
 				// this.triggerEvent('slideleft', myEventDetail, myEventOption)
-				this.$emit('slideLeft',this.data);
+				this.$emit('slideLeft',this.index);
 			},
 			slideUpFn(e){
 				// var myEventDetail = {}; // detail对象，提供给事件监听函数
 				// var myEventOption = {}; // 触发事件的选项
 				// this.triggerEvent('slideup', myEventDetail, myEventOption)
-				this.$emit('slideUp',this.data);
+				this.$emit('slideUp',this.index);
 			},
 			slideDownFn(e){
 				// var myEventDetail = {}; // detail对象，提供给事件监听函数
 				// var myEventOption = {}; // 触发事件的选项
 				// this.triggerEvent('slidedown', myEventDetail, myEventOption)
-				this.$emit('slideDown',this.data);
-			}
+				this.$emit('slideDown',this.index);
+			},
+            tt(){
+				console.log(this.index)
+            }
 		}
 	}
 </script>
@@ -161,7 +162,7 @@
 <style scoped>
 
     .test{
-        width: 100%; height: auto; display: block;
+        width: 100%; height: 100%; display: block;
     }
 
 
