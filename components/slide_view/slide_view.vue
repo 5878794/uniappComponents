@@ -29,9 +29,11 @@
 				type: [String,Number],
 				default: 500
 			},
-			dataId:{
-				type:String,
-                default:''
+			data:{
+				type:Object,
+                default(){
+					return {};
+                }
             }
 		},
 		created(){
@@ -132,25 +134,25 @@
 				// var myEventDetail = {}; // detail对象，提供给事件监听函数
 				// var myEventOption = {}; // 触发事件的选项
                 // this.triggerEvent('slideright', myEventDetail, myEventOption)
-				this.$emit('slideRight',this.dataId);
+				this.$emit('slideRight',this.data);
 			},
 			slideLeftFn(e){
 				// var myEventDetail = {}; // detail对象，提供给事件监听函数
 				// var myEventOption = {}; // 触发事件的选项
 				// this.triggerEvent('slideleft', myEventDetail, myEventOption)
-				this.$emit('slideLeft',this.dataId);
+				this.$emit('slideLeft',this.data);
 			},
 			slideUpFn(e){
 				// var myEventDetail = {}; // detail对象，提供给事件监听函数
 				// var myEventOption = {}; // 触发事件的选项
 				// this.triggerEvent('slideup', myEventDetail, myEventOption)
-				this.$emit('slideUp',this.dataId);
+				this.$emit('slideUp',this.data);
 			},
 			slideDownFn(e){
 				// var myEventDetail = {}; // detail对象，提供给事件监听函数
 				// var myEventOption = {}; // 触发事件的选项
 				// this.triggerEvent('slidedown', myEventDetail, myEventOption)
-				this.$emit('slideDown',this.dataId);
+				this.$emit('slideDown',this.data);
 			}
 		}
 	}
