@@ -23,14 +23,14 @@
                     <block v-if="item.isImg">
                         <image
                             class="banner_img"
-                            mode="aspectFill"
+                            :mode="mode"
                             :src="item.src"
                         ></image>
                     </block>
                     <block v-else>
                         <image
                             class="banner_img"
-                            mode="aspectFill"
+                            :mode="mode"
                             :src="item.poster"
                         ></image>
                         <view class="playVideo" :style="playImg"></view>
@@ -49,7 +49,7 @@
                     <image
                             v-if="item.isImg"
                             class="banner_img"
-                            mode="aspectFill"
+                            :mode="mode"
                             :src="item.src"
                     ></image>
                     <video
@@ -134,7 +134,11 @@
 			srcs:{
 				type:Array,
 				default:[]
-			}
+			},
+            mode:{
+				type:String,
+                default:'aspectFill'
+            }
 		},
 		data(){
 			return {
