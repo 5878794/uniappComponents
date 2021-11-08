@@ -11,6 +11,7 @@
             :vertical="vertical"
             :interval="interval"
             :duration="duration"
+            :current="current"
             :previous-margin="previousMargin"
             :next-margin="nextMargin"
             @animationfinish="changeEndFn"
@@ -138,6 +139,10 @@
             mode:{
 				type:String,
                 default:'aspectFill'
+            },
+            current:{
+				type:Number,
+                default:0
             }
 		},
 		data(){
