@@ -13,6 +13,7 @@
                         :style="textAlign__"
                         placeholder-class="placeholder_style"
                         :disabled="disabled"
+                        :maxlength="maxlength"
                         class="__input__ boxflex1"
                         type="digit"
                         :placeholder="placeholder"

@@ -43,6 +43,10 @@ export default {
 		inRef:{
 			type:String,
 			default:''
+		},
+		maxlength:{     //只有digit加咯该属性
+			type:[Number,String],
+			default:-1
 		}
 	},
 	data(){
