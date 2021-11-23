@@ -29,46 +29,48 @@
 
     export default {
     	props:{
-		    list:{
+		    list:{ //tab导航的内容
 		    	type:Array,
                 default(){
 		    		return [];
                 }
             },
-		    showNumber:{
+		    showNumber:{ //显示的数字
 		    	type:Array,
                 default(){
 		    		return [];
                 }
             },
-		    selectStyle:{
+		    selectStyle:{ //选中的样式
 		    	type:String,
                 default:'color:red;'
             },
-		    itemStyle:{
+		    itemStyle:{ //导航的样式
 		    	type:String,
                 default:'font-size:32rpx; color:#333;'
             },
-		    numberStyle:{
+		    numberStyle:{ //数字的样式
 		    	type:String,
                 default:'color:#fff;background:red;'
             },
-		    scrollX:{
+		    scrollX:{ //是否横向滚动
 		    	type:Boolean,
                 default:false
             }
         },
         data(){
     		return {
-			    itemStyles:[]
+			    itemStyles:[] //导航样式
             }
         },
 	    watch:{
     		list(){
+    			console.log('list watch')
     			this.setStyle()
             }
         },
         mounted(){
+    		this.n = 0;
     		this.setStyle();
         },
         methods:{
@@ -82,11 +84,12 @@
 				    this.itemWidth = '';
                 }
 
-		        this.chooseItem(0);
+		        this.chooseItem();
 
 
             },
             chooseItem(n){
+	        	n = n || this.n;
 	            this.itemCss = `${this.itemWidth} ${this.itemStyle}`;
 	            this.itemSelectCss= `${this.itemWidth} ${this.selectStyle}`;
 
@@ -104,6 +107,7 @@
             },
 	        clickFn(e){
                 let n = e.currentTarget.dataset.n;
+                this.n = n;
                 this.chooseItem(n);
 
                 this.$emit('clickFn',n);
