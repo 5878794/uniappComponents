@@ -9,11 +9,21 @@ html：
     loadingEndText="没有更多数据咯"
     loadErrText="加载失败，点击"
     ref="pageScrollLoad"            //写死
-    @loadMoreFn="loadFn"            //触发加载下一页的函数
+    @loadMoreFn="pageScrollLoad__"  //触发加载下一页的函数
 ></page-scroll-load>
 
 
 js：
+注意： onLoad中设置咯
+        this.pageIndex = 1;
+        this.pageSize = 20;
+      要修改的话在页面设置相同参数覆盖
+
+函数名已在mixins中使用  startPageLoad。pageScrollLoad__。pageLoadFn__
+
+
+
+
 import pageScrollLoad from '../../components/pageScrollLoad/pageScrollLoad';
 import pageScrollMixin from '../../components/pageScrollLoad/pageScrollLoadMixin';
 
@@ -21,33 +31,31 @@ import pageScrollMixin from '../../components/pageScrollLoad/pageScrollLoadMixin
 export default {
     components:{pageScrollLoad},
     mixins:[pageScrollMixin],
+    data(){
+        return {
+            list:[]
+        }
+    },
 
-    //必须onReady onLoad可能获取不到obj
-    onReady(){
-        //初始数据加载。。。。。
+    //必须onReady onLoad可能获取不到对象
+    async onReady(){
 
 
-        //需要调用开始监听函数
-        let obj = this.$refs.pageScrollLoad;
-        obj.startEventListener();
+        //getList  获取数据的函数名
+        //list     数据绑定的对象名
+        // 1       pageIndex值
+        await this.startPageLoad('getList','list',1);
     },
 
     methods: {
-        loadFn(){
-            ....ajax获取数据
-
-
-            //数据调用完成需要调用相应的状态
-            let obj = this.$refs.pageScrollLoad;
-
-            //加载失败调用
-            // obj.loadMoreError();
-
-            //加载成功调用
-            // obj.loadMoreEnd();
-
-            //没数据咯调用
-            //obj.noMoreData();
+        getList(){
+            //获取数据 返回数组
+            //ajax参数写到this对象上
+            return new Promise(success=>{
+                setTimeout(e=>{
+                    success([1,2,3,4]);
+                },2000)
+            })
 
         }
     }
