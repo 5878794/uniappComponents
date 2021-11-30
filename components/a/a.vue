@@ -3,7 +3,7 @@
 <template>
     <view
         :class="boxType"
-        style="width:100%;"
+        style="width:100%;height: 100%;"
         hover-class="hover"
         :url="href"
         :target="target"
