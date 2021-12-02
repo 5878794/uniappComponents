@@ -37,12 +37,17 @@
 		mixins:[mixinFn],
         methods:{
 	        addFn(){
-                this.val = this.val+1;;
+                this.val = this.val + 1;
+                this.emitFn();
             },
 	        lessenFn(){
 	        	let val = this.val - 1;
-	        	val = (val<0)? 0 : val;
+	        	val = (val<1)? 1 : val;
                 this.val = val;
+                this.emitFn();
+            },
+            emitFn(){
+	        	this.$emit('mychange',this.val,this.inRef);
             }
         }
 	}
