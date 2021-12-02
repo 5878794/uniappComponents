@@ -32,17 +32,21 @@
 		    value:{
 		    	type:Number,
                 default:1
+            },
+            addNumber:{
+		    	type:[Number,String],
+                default: 1
             }
         },
 		mixins:[mixinFn],
         methods:{
 	        addFn(){
-                this.val = this.val + 1;
+                this.val = parseInt(this.val) + parseInt(this.addNumber);
                 this.emitFn();
             },
 	        lessenFn(){
-	        	let val = this.val - 1;
-	        	val = (val<1)? 1 : val;
+	        	let val = parseInt(this.val) - parseInt(this.addNumber);
+	        	val = (val<this.addNumber)? this.addNumber : val;
                 this.val = val;
                 this.emitFn();
             },
