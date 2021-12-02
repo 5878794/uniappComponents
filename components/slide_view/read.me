@@ -7,7 +7,7 @@ ios上面横向滚动时 纵向会有点滚动 暂未处理
 html:
 <slide-view
     class="slideView"
-    :data="item"
+    :index='index'
     @slideRight="hideDel"
     @slideLeft="showDel"
 
@@ -27,6 +27,6 @@ js:
     components:{
         slideView
     },
-    showDel(id){
-        // id:   dataId绑定的id
+    showDel(index){
+        // index:   index
     }
