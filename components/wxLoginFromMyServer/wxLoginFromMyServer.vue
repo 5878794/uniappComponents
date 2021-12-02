@@ -61,7 +61,7 @@
                 );
 
 	            this.id = info.id;
-	            this.token = info.token;
+	            this.session_key = info.session_key;
 	            this.info = info;
 
                 if(this.needPhone){
@@ -77,7 +77,7 @@
 					iv:e.detail.iv,
 					encryptedData:e.detail.encryptedData,
                     id:this.id,
-                    token:this.token
+					session_key:this.session_key
                 });
 			},
             //服务器获取用户电话号码并解密
@@ -178,7 +178,7 @@
     }
     .btn1_{
         width: 100%; height: 100rpx; border-radius: 10rpx;
-        font-size: 32rpx; background: #43cf7c; color: #fff;
+        font-size: 32rpx; background: #0f9d58; color: #fff;
         position: relative; margin-bottom: 40rpx;
     }
     .btn2_{
