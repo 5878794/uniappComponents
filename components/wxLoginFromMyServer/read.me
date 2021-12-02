@@ -1,0 +1,31 @@
+
+
+微信授权用户信息及电话号码  通过自己的服务器获取
+
+
+
+html：
+wx-login-from-my-server(
+    //是否需要电话号码  不需要电话号码最终返回数据没有 mobile字段
+    :needPhone="false"
+    //获取电话号码的服务器的api地址
+    getPhoneApi="https://test59id2.kexunyun.cn/wxapi/User/wxPhoneNumber"
+    //获取用户信息的服务器的api地址
+    getUserInfoApi="https://test59id2.kexunyun.cn/wxapi/User/wxRegist"
+    //全部成功后的回调
+    @success="successFn"
+)
+
+
+js：
+import wxLoginFromMyServer from "../../components/wxLoginFromMyServer/wxLoginFromMyServer";
+
+export default {
+    components:{wxLoginFromMyServer},
+    methods:{
+        successFn(e){
+            //返回获取到的用户信息
+            console.log(e)
+        },
+    }
+}
