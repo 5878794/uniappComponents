@@ -1,0 +1,33 @@
+
+
+banner 无限循环(大数据量)  组件
+每次实际只显示3个元素
+
+使用需要修改component_item组件，为项目实际的布局样式
+
+
+
+html:
+banner_component_repeat(
+    class="swiper"
+    :list="list"
+)
+
+js:
+import banner_component_repeat from "../../components/banner_component_repeat/banner_component_repeat";
+export default {
+    components:{banner_component_repeat},
+    data(){
+        return {
+            list:[
+                {id:1,no:'0001',price:'1001.00',name:'牛1',src:'https://5b0988e595225.cdn.sohucs.com/images/20190222/1d6df50f4f514b799c957ae4cd2dd004.jpeg'},
+                {id:2,no:'0002',price:'1002.00',name:'牛2',src:'https://5b0988e595225.cdn.sohucs.com/images/20190222/1d6df50f4f514b799c957ae4cd2dd004.jpeg'},
+                {id:3,no:'0003',price:'1003.00',name:'牛3',src:'https://5b0988e595225.cdn.sohucs.com/images/20190222/1d6df50f4f514b799c957ae4cd2dd004.jpeg'},
+                {id:4,no:'0004',price:'1004.00',name:'牛4',src:'https://5b0988e595225.cdn.sohucs.com/images/20190222/1d6df50f4f514b799c957ae4cd2dd004.jpeg'},
+                {id:5,no:'0005',price:'1005.00',name:'牛5',src:'https://5b0988e595225.cdn.sohucs.com/images/20190222/1d6df50f4f514b799c957ae4cd2dd004.jpeg'},
+                {id:6,no:'0006',price:'1006.00',name:'牛6',src:'https://5b0988e595225.cdn.sohucs.com/images/20190222/1d6df50f4f514b799c957ae4cd2dd004.jpeg'},
+                {id:7,no:'0007',price:'1007.00',name:'牛7',src:'https://5b0988e595225.cdn.sohucs.com/images/20190222/1d6df50f4f514b799c957ae4cd2dd004.jpeg'}
+            ]
+        }
+    }
+}
