@@ -70,13 +70,11 @@
 
             	//判断是向前翻还是向后
                 if(nowSwiperIndex == swiperNextIndex){
-                	console.log('back')
                 	//向后翻
                     nowDataIndex = this.oldDataIndex+1;
                     nowDataIndex = (nowDataIndex>=this.list.length)? 0 : nowDataIndex;
                 }else{
                 	//向前翻
-                    console.log('per')
 	                nowDataIndex = this.oldDataIndex-1;
 	                nowDataIndex = (nowDataIndex<0)? this.list.length-1 : nowDataIndex;
                 }
@@ -89,7 +87,6 @@
                 [swiperNextIndex,swiperPerIndex] = this.getNextSwiperIndex(nowSwiperIndex);
                 //获取翻页后 下一页和上一页的data的index
                 let [dataNextIndex,dataPerIndex] = this.getNextDataIndex(nowDataIndex);
-                console.log(dataPerIndex,nowDataIndex,dataNextIndex)
 
                 let backData = [];
 		        backData[swiperNextIndex] = this.list[dataNextIndex];
