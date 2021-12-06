@@ -1,0 +1,25 @@
+
+
+物流信息显示组件 其中的电话号码可以点击拨打电话
+依赖  textShowPhone组件
+
+
+html:
+view(class="part")
+    logistics(title="物流信息" :list="logistics" :icon="icon")
+
+
+js:
+    icon:'/static/logistics_icon1.png',
+    logistics:[
+        {time:'2011-11-11 11:11:11',status:'打扫房间爱防静电12312312312阿斯顿发生'},
+        {time:'2011-11-11 11:11:11',status:'打扫房间爱防静电12312312312阿斯顿发生'},
+        {time:'2011-11-11 11:11:11',status:'打扫房间爱防静电12312312312阿斯顿发生'}
+    ]
+
+
+css:
+    .part{
+        padding:32rpx; width:100%; box-sizing:border-box;
+        background:#fff;
+    }
