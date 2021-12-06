@@ -174,10 +174,16 @@
 
 				this.srcs_ = newData;
             },
+            //获取文件后缀名
+			getFileExt(str){
+				str = (str)? str.split('?')[0] : '';
+				str = str.substr(str.lastIndexOf('.')+1);
+				return str;
+			},
             //判断是否是图片
 			fileIsImg(src){
 				let exts = ',bmp,jpg,jpeg,png,tif,gif,pcx,tga,exif,fpx,svg,psd,cdr,pcd,dxf,ufo,eps,ai,raw,WMF,webp,avif,apng,',
-                    ext = src.substr(src.lastIndexOf('.')+1);
+                    ext = this.getFileExt(src);
 
 				return (exts.indexOf(','+ext+',')>-1);
             },
