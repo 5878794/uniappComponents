@@ -11,8 +11,9 @@
 
                 <view
                         :style="textAlign__"
+                        style="display:flex !important;"
                         :disabled="disabled"
-                        class="__input__ boxflex1"
+                        class="__input__ boxflex1 box_hlc"
                 >{{val}}</view>
 
 
