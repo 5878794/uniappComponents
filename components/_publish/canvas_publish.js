@@ -5,6 +5,38 @@ let getCanvasSize = Symbol();
 
 
 export default {
+	async getContent(id,component,type,scale){
+		// if(!type){
+		// 	return uni.createCanvasContext(id,component);
+		// }
+
+		return new Promise(success=>{
+			let view = uni.createSelectorQuery().in(component).select("#"+id);
+
+			view.fields({ node: true, size: true })
+				.exec((res) => {
+					const canvas = res[0].node;
+					const ctx = canvas.getContext('2d');
+					const width = res[0].width*scale;         //px
+					const height = res[0].height*scale;       //px
+					const dpr = wx.getSystemInfoSync().pixelRatio;
+
+					canvas.width = width * dpr*scale;
+					canvas.height = height * dpr*scale;
+					ctx.scale(dpr*scale, dpr*scale);
+
+					success({canvas,ctx,width,height,dpr});
+				})
+		})
+	},
+	rem2px(val){
+		return val / 750 * uni.getSystemInfoSync().windowWidth;
+	},
+	px2rem(val){
+		return val*750/uni.getSystemInfoSync().windowWidth;
+	},
+
+
 	async getCanvasInfo(id,component){
 		let info = await this[getCanvasSize](id,component);
 		let width = info.width,
