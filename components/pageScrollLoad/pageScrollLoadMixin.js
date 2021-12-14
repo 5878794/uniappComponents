@@ -30,7 +30,7 @@ export default {
         async pageLoadFn__(pageIndex){
             pageIndex = pageIndex || this.pageIndex;
 
-            let data = await this[this.getListFn__]();
+            let data = await this[this.getListFn__](pageIndex);
 
             let dataLength = data.length;
             if(pageIndex == 1){
