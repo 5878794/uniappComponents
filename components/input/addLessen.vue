@@ -41,17 +41,27 @@
 		mixins:[mixinFn],
         methods:{
 	        addFn(){
+	        	let oldVal = this.val;
                 this.val = parseInt(this.val) + parseInt(this.addNumber);
-                this.emitFn();
+                this.emitFn(oldVal);
             },
 	        lessenFn(){
+		        let oldVal = this.val;
 	        	let val = parseInt(this.val) - parseInt(this.addNumber);
 	        	val = (val<this.addNumber)? this.addNumber : val;
                 this.val = val;
-                this.emitFn();
+                this.emitFn(oldVal);
             },
-            emitFn(){
-	        	this.$emit('mychange',this.val,this.inRef);
+            emitFn(oldVal){
+	        	this.$emit('mychange',oldVal,this.val,this.inRef);
+            },
+            reSet(val){
+	        	this.$nextTick(e=>{
+	        		setTimeout(e=>{
+				        this.val = val;
+                    },0)
+                });
+
             }
         }
 	}
