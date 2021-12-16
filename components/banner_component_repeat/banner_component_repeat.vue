@@ -68,7 +68,6 @@
 	            this.showList = data;
 
 	            if(data.length == 0){
-	            	console.log('nodata')
 	            	this.noData = true;
                 }
 

@@ -9,6 +9,7 @@ banner 无限循环(大数据量)  组件
 
 html:
 banner_component_repeat(
+    ref='banner'
     class="swiper"
     :list="list"
 )
@@ -29,5 +30,10 @@ export default {
                 {id:7,no:'0007',price:'1007.00',name:'牛7',src:'https://5b0988e595225.cdn.sohucs.com/images/20190222/1d6df50f4f514b799c957ae4cd2dd004.jpeg'}
             ]
         }
+    },
+    onLoad(){
+        //数据获取成功调用
+        let dom = this.$refs.banner;
+        dom.init();
     }
 }
