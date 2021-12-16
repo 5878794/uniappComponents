@@ -6,26 +6,30 @@
 
 
 <template lang="pug">
-    swiper(
-        class="swiper"
-        :indicator-dots="false"
-        :autoplay="false"
-        :circular="true"
-        :vertical="false"
-        :interval="5000"
-        :duration="500"
-        :current="0"
-        @change="changeFn"
-    )
-        swiper-item(
-            class="swiper_item"
-            v-for="(item,index) in showList"
-            :key="index"
+    view(style="width:100%;height:100%;")
+        swiper(
+            v-if='!noData'
+            class="swiper"
+            :indicator-dots="false"
+            :autoplay="false"
+            :circular="false"
+            :vertical="false"
+            :interval="5000"
+            :duration="500"
+            :current="0"
+            @change="changeFn"
         )
-            component-item(
-                class='item__'
-                :obj="item"
+            swiper-item(
+                class="swiper_item"
+                v-for="(item,index) in showList"
+                :key="index"
             )
+                component-item(
+                    class='item__'
+                    :obj="item"
+                )
+
+        view(v-else class="no_data" class="box_hcc" style="width:100%;height:100%;") 暂无可领养宝宝
 </template>
 
 <script>
@@ -35,29 +39,38 @@
         props:{
             list:{type:Array,default(){return []}}
         },
-        watch:{
-        	list(){
-        		this.init();
-            }
-        },
+        // watch:{
+        // 	list(){
+        // 		this.init();
+        //     }
+        // },
         data(){
         	return {
-        		showList:[]
+        		showList:[],
+
+		        noData:false
             }
         },
         mounted(){
         	this.showNumber = 3;  //必须3
-            this.init();
+            // this.init();
         },
         methods:{
             init(){
+
 	            //初始显示3个
 	            let data = [];
 	            for(let i=0,l=this.showNumber;i<l;i++){
-	            	data.push(this.list[i]);
+	            	if(this.list[i]){
+			            data.push(this.list[i]);
+                    }
 	            }
 	            this.showList = data;
 
+	            if(data.length == 0){
+	            	console.log('nodata')
+	            	this.noData = true;
+                }
 
 	            this.oldSwiperIndex = 0;  //当前swiper指针
 	            this.oldDataIndex = 0; //当前数据指针
@@ -93,6 +106,8 @@
 		        backData[swiperPerIndex] = this.list[dataPerIndex];
 		        backData[nowSwiperIndex] = this.list[nowDataIndex];
 		        this.showList = backData;
+
+		        this.$emit('changefn',nowDataIndex,this.list.length)
 
             },
             //获取当前swiper下一个和上一个的指针
